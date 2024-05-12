@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -9,6 +9,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
+    /* Your existing CSS styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,7 +18,7 @@
     }
 
     body {
-      background: linear-gradient(90deg, #D4F1F4, #75E6DA);
+      background: linear-gradient(90deg, #D4F1F4, #D4F1F4);
     }
 
     .container {
@@ -25,13 +26,14 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+
     }
 
     .screen {
       background: linear-gradient(90deg, #05445E, #189AB4);
       position: relative;
       height: 600px;
-      width: 360px;
+      width: 600px;
       box-shadow: 0px 0px 24px #5C5696;
     }
 
@@ -45,7 +47,7 @@
     }
 
     .logo {
-      width: 200px;
+      width: 250px;
       height: auto;
       margin-bottom: 20px;
       position: relative;
@@ -54,13 +56,13 @@
 
     .login {
       width: 100%;
-      max-width: 320px;
+      max-width: 400px;
       padding: 30px;
       padding-top: 40px;
     }
 
     .login__field {
-      padding: 20px 0px;
+      padding: 20px 20px;
       position: relative;
     }
 
@@ -77,7 +79,7 @@
       padding: 10px;
       padding-left: 24px;
       font-weight: 700;
-      width: 75%;
+      width: 100%;
       transition: .2s;
     }
 
@@ -89,28 +91,46 @@
     }
 
     .login__submit {
-      background: #fff;
-      font-size: 14px;
-      margin-top: 30px;
+      background-color: #ffffff;
+      color: #4C489D;
+      border: none;
       padding: 16px 20px;
       border-radius: 26px;
-      border: 1px solid #D4D3E8;
+      box-shadow: 0px 2px 2px #5C5696;
       text-transform: uppercase;
+      font-size: 14px;
       font-weight: 700;
       display: flex;
       align-items: center;
       width: 100%;
-      color: #4C489D;
-      box-shadow: 0px 2px 2px #5C5696;
       cursor: pointer;
-      transition: .2s;
+      transition: background-color 0.3s ease;
     }
 
-    .login__submit:active,
-    .login__submit:focus,
     .login__submit:hover {
-      border-color: #6A679E;
-      outline: none;
+      background-color: #007bff;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    #adminloginback {
+      background-color: transparent;
+      border: 1px solid #5C5696;
+      color: #ffffff;
+      box-shadow: 0px 2px 2px #5C5696;
+      padding: 12px 20px;
+      border-radius: 26px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 20px;
+      display: inline-block;
+      align-items: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #adminloginback:hover {
+      background-color: #4C489D;
+      color: #fff;
     }
 
     .button__icon {
@@ -169,6 +189,27 @@
       right: 50px;
       border-radius: 60px;
     }
+
+    .button1 {
+      display: inline-block;
+      background-color: #ffffff;
+      border: 1px solid #ffffff;
+      color: #4C489D;
+      box-shadow: 0px 2px 2px #5C5696;
+      padding: 12px 20px;
+      border-radius: 26px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 20px;
+      text-decoration: none;
+      /* Remove default link underline */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .button1:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -180,16 +221,18 @@
         <form class="login">
           <div class="login__field">
             <i class="login__icon fas fa-user"></i>
-            <input type="text" class="login__input" placeholder="User name">
+            <input type="text" id="username" class="login__input" placeholder="User name">
           </div>
           <div class="login__field">
             <i class="login__icon fas fa-lock"></i>
-            <input type="password" class="login__input" placeholder="Password">
+            <input type="password" id="password" class="login__input" placeholder="Password">
           </div>
           <button id="loginbutton" class="button login__submit">
             <span class="button__text">Log In </span>
             <i class="button__icon fas fa-chevron-right"></i>
           </button>
+
+          <a href="index.html" class="button1" id="backButton">Home</a>
         </form>
       </div>
       <div class="screen__background">
@@ -200,11 +243,42 @@
       </div>
     </div>
   </div>
+  
   <script>
+    
     // Add event listener to the button
     document.getElementById("loginbutton").onclick = function () {
-      // Redirect to admin dashboard page
-      window.location.href = "admindashboard.html";
+
+      event.preventDefault(); // Prevent default form submission
+
+      // Get username and password from form inputs
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Check if username and password match your predefined credentials
+      if (username === "admin" && password === "passwordadmin") {
+        // If credentials match, redirect to the dashboard page
+        window.location.href = "admindashboard.html";
+      }else  if (username === "doctor" && password === "passworddoctor") {
+        // If credentials match, redirect to the dashboard page
+        window.location.href = "DoctorDashboard.html";
+      }
+      else  if (username === "teacher" && password === "passwordteacher") {
+        // If credentials match, redirect to the dashboard page
+        window.location.href = "TeacherDashboard.html";
+      }
+      else if (username === "volunteer" && password === "passwordvolunteer") {
+        // If credentials match, redirect to the dashboard page
+        window.location.href = "DonorDashboard.html";
+      }
+      else if (username === "org" && password === "passwordorg") {
+        // If credentials match, redirect to the dashboard page
+        window.location.href = "OrgDashboard.html";
+      }
+       else {
+        // If credentials don't match, display an error message
+        alert("Invalid username or password. Please try again.");
+      }
     };
   </script>
 </body>

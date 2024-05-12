@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Org Post Donor</title>
+    <title>View Org Post Doctor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -249,7 +249,7 @@
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-
+                    
                     <a class="navbar-brand" href="index.html">
                         <img src="images/Helping Hands.jpeg" alt="">
                         <span>Helping Hands</span>
@@ -266,7 +266,7 @@
                             <ul class="navbar-nav  ">
                                 <li class="nav-item active">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="DonorDashboard.html"> Home </a>
+                                    <a class="nav-link" href="DoctorDashboard.html"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
@@ -294,14 +294,13 @@
     </div>
 
     <!-- Sidebar starts -->
-
+   
     <!-- Sidebar ends -->
 
     <!-- Page content -->
     <div id="main">
         <div class="filter-container">
-            <select class="filter-select" id="filterSelect"
-                onchange="filterItems(); adjustSidebarHeight(); moveInfoSection();">
+            <select class="filter-select" id="filterSelect" onchange="filterItems(); adjustSidebarHeight(); moveInfoSection();">
                 <option value="all">All</option>
                 <option value="Toys">Toys</option>
                 <option value="Food">Food</option>
@@ -704,14 +703,14 @@
             updateFilters();
 
         </script>
-
+    
         <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="Search...">
-            <button class="search-button" onclick="search()">Search</button>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+        <button class="search-button" onclick="search()">Search</button>
         </div>
-    </div>
+        </div>
 
-    <div class="posts-container">
+        <div class="posts-container">
         <!-- Example post cards -->
         <div class="post-card">
             <h2 class="post-title">Clothes Donation Request</h2>
@@ -1205,162 +1204,160 @@
                 <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
                 <button class="redirect-button" onclick="redirectToPage()">Donate</button>
             </div>
-        </div>
-    </div>
-    <section class="info_section layout_padding" id="info_section"
-        style="position: absolute; width: 100%; margin-top: 5%;">
-        <div class="container">
-            <div class="info_contact">
+    </div> </div>
+        <section class="info_section layout_padding" id="info_section" style="position: absolute; width: 100%; margin-top: 5%;">
+            <div class="container">
+                <div class="info_contact">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="">
+                                <img src="images/location-white.png" alt="">
+                                <span>
+                                    Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="">
+                                <img src="images/telephone-white.png" alt="">
+                                <span>
+                                    Call : +01212777100
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="">
+                                <img src="images/envelope-white.png" alt="">
+                                <span>
+                                    helping-hands@gmail.com
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <a href="">
-                            <img src="images/location-white.png" alt="">
-                            <span>
-                                Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
-                            </span>
-                        </a>
+                    <div class="col-md-8 col-lg-9">
+                        <div class="info_form">
+                            <form action="">
+                                <input type="text" placeholder="Enter your email">
+                                <button>
+                                    subscribe
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <a href="">
-                            <img src="images/telephone-white.png" alt="">
-                            <span>
-                                Call : +01212777100
-                            </span>
-                        </a>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="info_social">
+                            <div>
+                                <a href="">
+                                    <img src="images/fb.png" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <img src="images/twitter.png" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <img src="images/linkedin.png" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <img src="images/instagram.png" alt="">
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <a href="">
-                            <img src="images/envelope-white.png" alt="">
-                            <span>
-                                helping-hands@gmail.com
-                            </span>
-                        </a>
+                </div>
+        
+            </div>
+        </section>
+        
+        <!-- end info section -->
+        
+        <footer class="container-fluid footer_section" id="footer_section"
+            style="position: absolute;width:center; margin-top: 34%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-9 mx-auto">
+                        <p>
+                            &copy; 2024 Software Project
+                            <a href="https://html.design/">Helping Hands Charity Organization</a>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 col-lg-9">
-                    <div class="info_form">
-                        <form action="">
-                            <input type="text" placeholder="Enter your email">
-                            <button>
-                                subscribe
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="info_social">
-                        <div>
-                            <a href="">
-                                <img src="images/fb.png" alt="">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="">
-                                <img src="images/twitter.png" alt="">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="">
-                                <img src="images/linkedin.png" alt="">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="">
-                                <img src="images/instagram.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- end info section -->
-
-    <footer class="container-fluid footer_section" id="footer_section"
-        style="position: absolute;width:center; margin-top: 34%;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 col-md-9 mx-auto">
-                    <p>
-                        &copy; 2024 Software Project
-                        <a href="https://html.design/">Helping Hands Charity Organization</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
 
-    <script>
-        function toggleNav() {
-            var sidebar = document.getElementById("mySidebar");
-            var main = document.getElementById("main");
-            if (sidebar.style.width === "200px") {
-                sidebar.style.width = "0";
-                main.style.marginLeft = "0";
-            } else {
-                sidebar.style.width = "200px";
-                main.style.marginLeft = "200px";
-                adjustSidebarHeight(); // Call the function to adjust sidebar height
-            }
-        }
-        function toggleDetails(button) {
-            var details = button.parentElement.parentElement.querySelector('.post-details'); // Get the details element
-            if (details.style.display === 'none' || details.style.display === '') {
-                details.style.display = 'block'; // Show details
-                button.textContent = 'Hide Details'; // Change button text
-            } else {
-                details.style.display = 'none'; // Hide details
-                button.textContent = 'Show Details'; // Change button text
-            }
-        }
-
-        function toggleDetailsmap(button) {
-            var details = button.parentElement.parentElement.querySelector('.post-details'); // Get the details element
-            var mapContainer = button.parentElement.parentElement.querySelector('.col-md-6#wmap'); // Get the map container
-            if (details.style.display === 'none' || details.style.display === '') {
-                details.style.display = 'block'; // Show details
-                mapContainer.style.display = 'block'; // Show map
-                button.textContent = 'Hide Details'; // Change button text
-            } else {
-                details.style.display = 'none'; // Hide details
-                mapContainer.style.display = 'none'; // Hide map
-                button.textContent = 'Show Details'; // Change button text back to 'Show Details'
+        <script>
+            function toggleNav() {
+                    var sidebar = document.getElementById("mySidebar");
+                    var main = document.getElementById("main");
+                    if (sidebar.style.width === "200px") {
+                        sidebar.style.width = "0";
+                        main.style.marginLeft = "0";
+                    } else {
+                        sidebar.style.width = "200px";
+                        main.style.marginLeft = "200px";
+                        adjustSidebarHeight(); // Call the function to adjust sidebar height
+                    }
+                }
+            function toggleDetails(button) {
+                var details = button.parentElement.parentElement.querySelector('.post-details'); // Get the details element
+                if (details.style.display === 'none' || details.style.display === '') {
+                    details.style.display = 'block'; // Show details
+                    button.textContent = 'Hide Details'; // Change button text
+                } else {
+                    details.style.display = 'none'; // Hide details
+                    button.textContent = 'Show Details'; // Change button text
+                }
             }
 
-        }
+            function toggleDetailsmap(button) {
+                var details = button.parentElement.parentElement.querySelector('.post-details'); // Get the details element
+                var mapContainer = button.parentElement.parentElement.querySelector('.col-md-6#wmap'); // Get the map container
+                if (details.style.display === 'none' || details.style.display === '') {
+                    details.style.display = 'block'; // Show details
+                    mapContainer.style.display = 'block'; // Show map
+                    button.textContent = 'Hide Details'; // Change button text
+                } else {
+                    details.style.display = 'none'; // Hide details
+                    mapContainer.style.display = 'none'; // Hide map
+                    button.textContent = 'Show Details'; // Change button text back to 'Show Details'
+                }
+
+            }
 
 
 
-        function redirectToPage() {
-            // Redirect to another page
-            window.location.href = 'schedulemeeting.html'; // Replace 'DonorFullfillDonationPost.html' with your desired URL
-        }
-        /*  function updateFilters() {
-      var selectedCategory = document.getElementById("filterSelect").value.toLowerCase();
-      var postCards = document.getElementsByClassName("post-card");
-  
-      for (var i = 0; i < postCards.length; i++) {
-          var postCard = postCards[i];
-          var postTitle = postCard.querySelector(".post-title").textContent.toLowerCase();
-  
-          // Example: If the category name is found in the post title, display the card
-          if (selectedCategory === "all" || postTitle.includes(selectedCategory)) {
-              postCard.style.display = "block";
-          } else {
-              postCard.style.display = "none";
+            function redirectToPage() {
+                // Redirect to another page
+                window.location.href = 'schedulemeeting.html'; // Replace 'DonorFullfillDonationPost.html' with your desired URL
+            }
+            /*  function updateFilters() {
+          var selectedCategory = document.getElementById("filterSelect").value.toLowerCase();
+          var postCards = document.getElementsByClassName("post-card");
+      
+          for (var i = 0; i < postCards.length; i++) {
+              var postCard = postCards[i];
+              var postTitle = postCard.querySelector(".post-title").textContent.toLowerCase();
+      
+              // Example: If the category name is found in the post title, display the card
+              if (selectedCategory === "all" || postTitle.includes(selectedCategory)) {
+                  postCard.style.display = "block";
+              } else {
+                  postCard.style.display = "none";
+              }
           }
-      }
-  }*/
+      }*/
 
 
 
 
-    </script>
+        </script>
 
     </div>
 

@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Donor dashboard</title>
+    <title>Organization dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,9 +13,9 @@
         }
 
         .sidebar {
-            min-height: calc(95vh - 60px);
+            min-height: calc(89.5vh - 60px);
             width: 0;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             background-color: #D4F1F4;
@@ -40,27 +38,30 @@
         }
 
         .sidebar .closebtn {
-            position: absolute;
+            position: sticky;
             top: 10px;
             right: 25px;
             font-size: 36px;
+            left: 20px;
             margin-left: 50px;
         }
 
         .openbtn {
-            font-size: 20px;
+            font-size: 30px;
+            /* Increase the font size as desired */
             cursor: pointer;
             background-color: #D4F1F4;
             color: #0f6b7c;
             padding: 10px 15px;
             border: none;
-            position: fixed;
-            left: 20px;
-            top: 10px;
+            position: Sticky;
+            left: 0px;
+            top: auto;
             z-index: 9999;
-
             /* Ensure the toggle button is above other elements */
         }
+
+
 
         .openbtn:hover {
             background-color: #D4F1F4;
@@ -70,6 +71,10 @@
             transition: margin-left .5s;
             padding: 16px;
             margin-left: 0;
+        }
+
+        .header_section {
+            position: relative;
         }
 
         .logo-title {
@@ -105,7 +110,7 @@
             /* Set height equal to width for square shape */
             background-color: #fff;
             /* Button background color */
-            color: #05445E;
+            color: #000000;
             /* Button text color */
             border: none;
             /* Remove button border */
@@ -133,6 +138,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="sub_page">
@@ -142,11 +148,12 @@
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <button class="openbtn" onclick="toggleNav()">☰</button> <!-- Sidebar toggle button -->
+                    <button class="openbtn" onclick="toggleNav()" style="margin-left: -150px;">☰</button>
+                    <!-- Sidebar toggle button -->
 
                     <a class="navbar-brand" href="index.html">
-                        <img src="images/Helping Hands.jpeg" alt="">
-                        <span>
+                        <img src="images/Helping Hands.jpeg" alt="" style="margin-left: 100px;">
+                        <span style="font-weight: 2000;">
                             Helping Hands
                         </span>
                     </a>
@@ -164,10 +171,26 @@
                                 <li class="nav-item active">
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="DonorDashboard.html"> Home </a>
+                                    <a class="nav-link" href="OrgDashboard.html"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-bell fa-lg"></i> <span
+                                            class="badge badge-pill badge-danger">3</span>
+                                        <!-- Example: display number of notifications -->
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item">Notification 1</a>
+                                        <a class="dropdown-item">Notification 2</a>
+                                        <a class="dropdown-item">Notification 3</a>
+                                        <!-- Add more notifications as needed -->
+                                    </div>
+                                </li>
+                                </li>
 
                             </ul>
                         </div>
@@ -179,36 +202,42 @@
     </div>
 
     <!-- sidebar section starts -->
-    <div id="mySidebar" class="sidebar" style="width: 0px; position: absolute;height:1000px;">
+    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute;"">
 
-        <a href="CreatePostDonor.html">Create Post</a>
-        <a href="ViewPostsDonor.html">View My Posts</a>
-        <a href="ViewFulfilledPostsDonor.html">View My Fulfilled Posts</a>
-        <a href="accountmanagementdonor.html">Account Management</a>
-        <a href="ViewOrganizationDonor.html">View Organizations</a>
-        <a href="ViewOrgPostDonor.html">View Organization Posts</a>
+        <a href=" OrganizationDonation_posts.html">Create Post</a>
+        <a href="OrgMyPost.html">View My Posts</a>
+        <a href="OrgFullfilledPost.html">View My Fulfilled Posts</a>
+        <a href="AcctMangOrg.html">Account Management</a>
+        <a href="ViewOrgPostDonor.html">View Donor Posts</a>
     </div>
     <!-- end sidebar section -->
 
     <!-- Page content -->
     <div id="main">
         <div class="button-row">
-            <button id="createpostvol" class="square-button"><i class="fas fa-edit"></i> Create Post</button>
-            <button id="viewpostsvol" class="square-button"><i class="fas fa-eye"></i> View My Posts</button>
-            <button id="viewfullvol" class="square-button"><i class="fas fa-check-circle"></i> View My Fulfilled
-                Posts</button>
+            <a href="OrganizationDonation_posts.html">
+                <button class="square-button"> Create Donation Post </button>
+            </a>
+            <a href="AcctMangOrg.html">
+                <button class="square-button">Account Management</button>
+            </a>
+            <a href="OrgFullfilledPost.html">
+                <button class="square-button">Fulfilled Posts</button>
+            </a>
+
         </div>
         <div class="button-row">
-            <button id="accmgtvol" class="square-button"><i class="fas fa-user-cog"></i> Account Management</button>
-            <button id="vieworgvol" class="square-button"><i class="fas fa-users"></i> View Organizations</button>
-            <button id="vieworgpostvol" class="square-button"><i class="fas fa-building"></i> View Organization
-                Posts</button>
+            <a href="OrgMyPost.html">
+                <button class="square-button">view my posts</button>
+            </a>
+            <button class="square-button">view Donor posts</button>
         </div>
         <!-- content here -->
     </div>
     <!-- end Page content -->
 
-    <section class="info_section layout_padding" id="info_section" style="position: absolute; width: 100%; margin-top: 5%;">
+    <section class="info_section layout_padding" id="info_section"
+        style="position: absolute; width: 100%; margin-top: 5%;">
         <div class="container">
             <div class="info_contact">
                 <div class="row">
@@ -274,12 +303,12 @@
                     </div>
                 </div>
             </div>
-    
+
         </div>
     </section>
-    
+
     <!-- end info section -->
-    
+
     <footer class="container-fluid footer_section" id="footer_section"
         style="position: absolute;width:center; margin-top: 34%;">
         <div class="container">
@@ -293,7 +322,6 @@
             </div>
         </div>
     </footer>
-    
     <script>
         function toggleNav() {
             var sidebar = document.getElementById("mySidebar");
@@ -309,34 +337,7 @@
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script>
-    <script>
-        document.getElementById("createpostvol").onclick = function () {
-
-            window.location.href = "CreatePostDonor.html";
-        };
-        document.getElementById("viewpostsvol").onclick = function () {
-
-            window.location.href = "ViewPostsDonor.html";
-        };
-        document.getElementById("viewfullvol").onclick = function () {
-
-            window.location.href = "ViewFulfilledPostsDonor.html";
-        };
-        document.getElementById("accmgtvol").onclick = function () {
-
-            window.location.href = "accountmanagementdonor.html";
-        };
-        document.getElementById("vieworgvol").onclick = function () {
-
-            window.location.href = "ViewOrganizations.html";
-        };
-        document.getElementById("vieworgpostvol").onclick = function () {
-
-            window.location.href = "ViewOrgPosts.html";
-        };
-    </script>
-    <!-- Add this line for JavaScript -->
+    <script src="js/script.js"></script> <!-- Add this line for JavaScript -->
 
 </body>
 

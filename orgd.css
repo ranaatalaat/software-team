@@ -1,0 +1,129 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  min-height: calc(89.5vh - 60px);
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #D4F1F4;
+  overflow-x: hidden;
+  transition: 0s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #0f6b7c;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #0f6b7c;
+}
+
+.sidebar .closebtn {
+  position: sticky;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+  left: 20px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 30px;
+  /* Increase the font size as desired */
+  cursor: pointer;
+  background-color: #D4F1F4;
+  color: #0f6b7c;
+  padding: 10px 15px;
+  border: none;
+  position: Sticky;
+  left: 0px;
+  top: auto;
+  z-index: 9999;
+  /* Ensure the toggle button is above other elements */
+}
+
+
+
+.openbtn:hover {
+  background-color: #D4F1F4;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+  margin-left: 0;
+}
+
+.header_section {
+  position: relative;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  /* Adjust margin to avoid overlap */
+}
+
+.logo {
+  margin-right: 10px;
+  max-width: 50px;
+  /* Limit the logo size */
+  height: auto;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  /* Maintain the font size of the title */
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  /* Adjust spacing between rows */
+}
+
+.square-button {
+  width: 350px;
+  /* Adjust button width as needed */
+  height: 250px;
+  /* Set height equal to width for square shape */
+  background-color: #fff;
+  /* Button background color */
+  color: #000000;
+  /* Button text color */
+  border: none;
+  /* Remove button border */
+  border-radius: 10px;
+  /* Button border radius */
+  font-size: 18px;
+  /* Button text size */
+  font-weight: bold;
+  /* Button text weight */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background color */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add shadow */
+  margin: 10px;
+  /* Adjust spacing between buttons */
+}
+
+.square-button:hover {
+  background-color: #6A679E;
+  /* Change background color on hover */
+}

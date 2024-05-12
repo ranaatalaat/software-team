@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Change Password</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #D4F1F4, #D4F1F4);
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            /* Center the logo */
+            margin-top: 1500px;
+            /* Adjust top margin to shift down */
+        }
+
+        h2 {
+            font-weight: normal;
+            /* Set font weight to normal */
+        }
+
+        .container .logo {
+            width: 150px;
+            /* Adjust width as needed */
+            margin-bottom: 5px;
+            /* Add some spacing below the image */
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            position: relative;
+
+        }
+
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 285px;
+            bottom: -10px;
+            height: 3px;
+            width: 70px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #05445E, #189AB4);
+
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .input-box span.details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input-box input[type="text"],
+        .input-box select {
+            height: 45px;
+            width: calc(100% - 20px);
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input[type="file"] {
+            display: none;
+        }
+
+        .input-box label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            height: 45px;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .button {
+            margin-top: 20px;
+        }
+
+        .button input[type="submit"] {
+            background: #4C489D;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button input[type="submit"]:hover {
+            background: #6A679E;
+        }
+
+        .button1 {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid #5C5696;
+            box-shadow: 0px 2px 2px #5C5696;
+            color: #4C489D;
+            box-shadow: 0px 2px 2px #5C5696;
+            padding: 12px 20px;
+            border-radius: 26px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 20px;
+            text-decoration: none;
+            /* Remove default link underline */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button1:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        #map {
+            height: 400px;
+            /* Adjust height as needed */
+            width: 100%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 24px #5C5696;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 600px;
+            /* Adjust width as needed */
+            height: 250px;
+            /* Adjust height to match width for a square */
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Align items with space between */
+            text-align: center;
+            /* Center the content */
+        }
+
+        /* Styles for Ok button */
+        #okButton {
+            background-color: #4C489D;
+            ;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            /* Adjust text size as needed */
+            margin: 20px auto 0;
+            /* Center the button and add space from top */
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        /* Change button background color on hover */
+        #okButton:hover {
+            background-color: #6A679E;
+        }
+
+        /* Additional styles for the close button */
+        .close {
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Styles for the registered successfully message */
+        .success-message {
+            display: block;
+            /* Display as block-level element */
+            font-size: 24px;
+            /* Adjust font size as needed */
+            color: #05445E;
+            /* Adjust color as needed */
+            margin-bottom: 10px;
+            /* Adjust margin as needed */
+        }
+
+        .main-content {
+
+            /* Adjust according to sidebar width */
+            padding: 20px;
+        }
+
+        .change-password-form {
+            max-width: 400px;
+            margin: auto;
+            /* Center the form horizontally */
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #6A679E;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6A679E;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #5a578a;
+        }
+
+        .success-popup {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body class="sub_page">
+
+    <div class="main-content">
+        <div class="change-password-form">
+            <h2>Change Password</h2>
+            <form id="password-form" onsubmit="changePassword(event)">
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" name="current-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Change Password</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <script>
+        function toggleNav() {
+            var sidebar = document.getElementById("mySidebar");
+            var main = document.getElementById("main");
+            if (sidebar.style.width === "200px") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "200px";
+                main.style.marginLeft = "200px";
+            }
+        }
+
+        function changePassword(event) {
+            event.preventDefault();
+            var newPassword = document.getElementById('new-password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+            // Simulate password change success
+            document.getElementById('password-form').reset();
+            document.getElementById('success-popup').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('success-popup').style.display = 'none';
+            }, 3000); // Hide popup after 3 seconds
+        }
+        document.getElementById("password-form").addEventListener("submit", function (event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Display an alert after submission
+            alert("Your post has been submitted successfully!");
+
+            // Optionally, you can reset the form after submission
+            // document.getElementById("donationForm").reset();
+        });
+    </script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

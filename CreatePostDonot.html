@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post Donor</title>
+
+    <link rel="stylesheet" href="orgpost.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body class="sub_page">
+
+    <div class="hero_area">
+        <!-- header  starts -->
+        <header class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <button class="openbtn" onclick="toggleNav()">☰</button>
+                    <!-- Sidebar toggle button -->
+
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/Helping Hands.jpeg" alt="">
+                        <span>
+                            Helping Hands
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="s-1"> </span>
+                        <span class="s-2"> </span>
+                        <span class="s-3"> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                            <ul class="navbar-nav  ">
+                                <li class="nav-item active">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="DonorDashboard.html"> Home </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html"> Log Out </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-bell fa-lg"></i> <span
+                                            class="badge badge-pill badge-danger">3</span>
+                                        <!-- Example: display number of notifications -->
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item">Notification 1</a>
+                                        <a class="dropdown-item">Notification 2</a>
+                                        <a class="dropdown-item">Notification 3</a>
+                                        <!-- Add more notifications as needed -->
+                                    </div>
+                                </li>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    <!-- sidebar section starts -->
+    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute; margin-bottom: 2000 px">
+
+        <a href="CreatePostDonor.html">Create Post</a>
+        <a href="ViewPostsDonor.html">View My Posts</a>
+        <a href="ViewFulfilledPostsDonor.html">View My Fulfilled Posts</a>
+        <a href="accountmanagementdonor.html">Account Management</a>
+        <a href="ViewOrganizationDonor.html">View Organizations</a>
+        <a href="ViewOrgPostDonor.html">View Organization Posts</a>
+    </div>
+    <!-- end sidebar section -->
+
+
+
+
+    <!-- Within the existing HTML structure -->
+    <div id="main">
+        <div class="container">
+            <h2>Submit Donation Post</h2>
+            <form id="donationForm">
+                <label for="donationCategory">Item Category:</label>
+                <select required id="donationCategory" name="donationCategory">
+                    <option value="select">Select</option>
+                    <option value="clothing">Clothes</option>
+                    <option value="toys">Toys</option>
+                    <option value="food">Food</option>
+                    <option value="medicalSupplies">Medical supplies</option>
+                    <option value="schoolSupplies">School supplies</option>
+                    <option value="bloodDonations">Blood Donations</option>
+
+
+                </select><br><br>
+                <!-- Additional details for clothing -->
+                <div style="display: none;" id="detailsclothes">
+
+                    <label for="typeofclothing">Please enter the type of clothing.</label>
+
+                    <textarea required id="typeofclothing" name="typeofclothing" rows="1" cols="50"></textarea><br><br>
+
+                    <label for="age">age</label>
+
+                    <textarea required id="age" name="age" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="gender">gender</label>
+                    <select required name="gender" id="gender1">
+                        <option value="select">Select</option>
+                        <option value="male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+
+
+                    <label for="season">season</label>
+                    <select required name="season" id="season1">
+                        <option value="select">Select</option>
+                        <option value="spring">spring</option>
+                        <option value="fall">fall</option>
+                        <option value="summer">summer</option>
+                        <option value="winter">winter</option>
+                    </select>
+
+
+                    <label for="Material">Material</label>
+                    <textarea required id="Material" name="Material" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="Quantity">Quantity</label>
+                    <textarea required id="Quantity" name="Quantity" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="Additionaldetails"> Additional details.</label>
+                    <textarea id="clothesinfo" name="clothesinfo" rows="2" cols="50"></textarea><br><br>
+
+                </div>
+
+                <!-- Additional details for toys -->
+                <div style="display: none;" id="detailstoys">
+
+                    <label for="type">Type</label>
+
+                    <textarea required id="type" name="type" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="toyAge">Age</label>
+
+                    <textarea required id="toyAge" name="toyAge" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="toyGender">Gender</label>
+                    <select required name="toyGender" id="toyGender">
+                        <option value="select">Select</option>
+                        <option value="male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+
+
+                    <label for="toyCategory">Category</label>
+
+                    <textarea required id="toyCategory" name="toyCategory" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="toyQuantity">Quantity requested</label>
+
+                    <textarea required id="toyQuantity" name="toyQuantity" rows="1" cols="50"></textarea><br><br>
+
+                    <label for="photo2">Upload Photo:</label><br>
+                    <input required type="file" id="photo2" name="photo2" accept="image/*"><br><br>
+                </div>
+
+                <!-- Additional details for food -->
+                <div style="display: none;" id="detailsfood">
+
+                    <label for="foodName">Name</label>
+
+                    <textarea required id="foodName" name="foodName" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="foodQuantity">Quantity required</label>
+
+                    <textarea required id="foodQuantity" name="foodQuantity" rows="1" cols="50"></textarea><br><br>
+                </div>
+
+
+
+
+
+
+
+
+                <!-- Additional details for medical supplies -->
+                <div style="display: none;" id="detailsMedicalsupplies">
+
+                    <label for="medicalDeviceType">Device type</label>
+
+                    <textarea required id="medicalDeviceType" name="medicalDeviceType" rows="1"
+                        cols="50"></textarea><br><br>
+
+
+                    <label for="medicalUse">Use</label>
+
+                    <textarea required id="medicalUse" name="medicalUse" rows="1" cols="50"></textarea><br><br>
+
+
+                    <label for="medicalQuantity">Quantity required</label>
+
+                    <textarea required id="medicalQuantity" name="medicalQuantity" rows="1"
+                        cols="50"></textarea><br><br>
+
+                    <label for="photo3">Upload Photo:</label><br>
+                    <input required type="file" id="photo3" name="photo3" accept="image/*"><br><br>
+                </div>
+
+
+
+
+
+                <!-- Additional details for school supplies -->
+                <div style="display: none;" id="detailsSchoolsupplies">
+
+                    <label for="item">please select your item</label>
+
+                    <select name="item" id="item1">
+                        <option value="select">Select</option>
+                        <option value="Stationary items">Stationary items</option>
+                        <option value="Books">Books</option>
+                    </select>
+                    <div id="books1" style="display: none;">
+
+                        <label for="bookname">Book name</label>
+
+                        <textarea id="bookname" name="bookname" rows="1" cols="50"></textarea><br><br>
+
+
+                        <label for="AuthorName">Author Name</label>
+
+                        <textarea id="AuthorName" name="AuthorName" rows="1" cols="50"></textarea><br><br>
+
+
+                        <label for="Language">Language</label>
+                        <textarea id="Language" name="Language" rows="1" cols="50"></textarea><br><br>
+
+                        <label for="edition">Edition</label>
+                        <textarea id="edition" name="edition" rows="1" cols="50"></textarea><br><br>
+
+
+
+                        <label for="shortsummary">Short Summary</label>
+
+                        <textarea id="shortsummary" name="shortsummary" rows="1" cols="50"></textarea><br><br>
+
+
+                        <label for="bookQuantity">Quantity</label>
+
+                        <textarea id="bookQuantity" name="bookQuantity" rows="1" cols="50"></textarea><br><br>
+
+                        <label for="photo">Upload Photo:</label><br>
+                        <input required type="file" id="photo" name="photo" accept="image/*"><br><br>
+                    </div>
+
+                    <div id="Stationaryitems" style="display: none;">
+
+                        <label for="Typeofitem">Type of item</label>
+
+                        <textarea id="Typeofitem" name="Typeofitem" rows="1" cols="50"></textarea><br><br>
+
+                        <label for="stationaryQuantity">Amount requested</label>
+
+                        <textarea id="stationaryQuantity" name="stationaryQuantity" rows="1"
+                            cols="50"></textarea><br><br>
+                    </div>
+                </div>
+
+                <!-- Additional details for blood donations -->
+                <div style="display: none;" id="detailsBlooddonations">
+
+
+
+
+                    <label for="BloodType">Please select your blood type.</label>
+
+                    <select required id="BloodType" name="BloodType">
+                        <option value="select">Select</option>
+                        <option value="A"> A </option>
+                        <option value="B"> B </option>
+                        <option value="AB">AB </option>
+                        <option value="O"> O </option>
+                    </select><br><br>
+
+                    <label> RH type:</label>
+                    <button type="button" onclick="setRH('+')">+</button>
+                    <button type="button" onclick="setRH('-')">-</button>
+                    <input type="hidden" id="rhtype" name="rhtype" required><br><br>
+
+
+
+                </div>
+
+
+
+                <input type="submit" value="Submit Post">
+
+            </form>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <section class="info_section layout_padding" id="info_section" style="position: absolute; width: 100%; margin-top: 5%;">
+        <div class="container">
+            <div class="info_contact">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/location-white.png" alt="">
+                            <span>
+                                Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/telephone-white.png" alt="">
+                            <span>
+                                Call : +01212777100
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/envelope-white.png" alt="">
+                            <span>
+                                helping-hands@gmail.com
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-lg-9">
+                    <div class="info_form">
+                        <form action="">
+                            <input type="text" placeholder="Enter your email">
+                            <button>
+                                subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="info_social">
+                        <div>
+                            <a href="">
+                                <img src="images/fb.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/twitter.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/linkedin.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/instagram.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    
+    <!-- end info section -->
+    
+    <footer class="container-fluid footer_section" style="position: absolute;width:center; margin-top: 35%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-9 mx-auto">
+                    <p>
+                        &copy; 2024 Software Project
+                        <a href="https://html.design/">Helping Hands Charity Organization</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleNav() {
+            var sidebar = document.getElementById("mySidebar");
+            var main = document.getElementById("main");
+            if (sidebar.style.width === "200px") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "200px";
+                main.style.marginLeft = "200px";
+            }
+        }
+    </script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script> <!-- Add this line for JavaScript -->
+ <!-- Corrected JavaScript code -->
+    <script>
+        document.getElementById("donationCategory").addEventListener("change", function () {
+            var category = this.value;
+            // Hide all additional details divs
+            hideAllDetails();
+            // Show the corresponding additional details div based on the selected category
+            switch (category) {
+                case "clothing":
+                    document.getElementById("detailsclothes").style.display = "block";
+                    makeInputsRequired("detailsclothes");
+                    break;
+                case "toys":
+                    document.getElementById("detailstoys").style.display = "block";
+                    makeInputsRequired("detailstoys");
+                    break;
+                case "food":
+                    document.getElementById("detailsfood").style.display = "block";
+                    makeInputsRequired("detailsfood");
+                    break;
+                case "medicalSupplies":
+                    document.getElementById("detailsMedicalsupplies").style.display = "block";
+                    makeInputsRequired("detailsMedicalsupplies");
+                    break;
+                case "schoolSupplies":
+                    document.getElementById("detailsSchoolsupplies").style.display = "block";
+                    makeInputsRequired("detailsSchoolsupplies");
+                    break;
+                case "bloodDonations":
+                    document.getElementById("detailsBlooddonations").style.display = "block";
+                    makeInputsRequired("detailsBlooddonations");
+                    break;
+
+            }
+        });
+
+        function hideAllDetails() {
+            document.getElementById("detailsclothes").style.display = "none";
+            document.getElementById("detailstoys").style.display = "none";
+            document.getElementById("detailsfood").style.display = "none";
+            document.getElementById("detailsMedicalsupplies").style.display = "none";
+            document.getElementById("detailsSchoolsupplies").style.display = "none";
+            document.getElementById("detailsBlooddonations").style.display = "none";
+
+        }
+
+        function makeInputsRequired(detailId) {
+            var allDetails = ["detailsclothes", "detailstoys", "detailsfood", "detailsMedicalsupplies", "detailsSchoolsupplies", "detailsBlooddonations"];
+            // Remove 'detailId' from the array
+            var otherDetails = allDetails.filter(function (item) {
+                return item !== detailId;
+            });
+
+            otherDetails.forEach(function (otherDetail) {
+                var inputs = document.getElementById(otherDetail).getElementsByTagName("input");
+                var textareas = document.getElementById(otherDetail).getElementsByTagName("textarea");
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].removeAttribute("required");
+                }
+                for (var j = 0; j < textareas.length; j++) {
+                    textareas[j].removeAttribute("required");
+                }
+            });
+        }
+    </script>
+
+
+    <script>
+        document.getElementById("item1").addEventListener("change", function () {
+            var selectedItem = this.value;
+
+            hideAllDetails2();
+            // Show the corresponding additional details div based on the selected item
+            switch (selectedItem) {
+                case "Books":
+                    document.getElementById("books1").style.display = "block";
+                    break;
+                case "Stationary items":
+                    document.getElementById("Stationaryitems").style.display = "block";
+                    break;
+                default:
+                    // If none is selected, do nothing or show a default message
+                    break;
+            }
+        });
+
+        function hideAllDetails2() {
+            document.getElementById("books1").style.display = "none";
+            document.getElementById("Stationaryitems").style.display = "none";
+        }
+    </script>
+
+    <script>
+        // JavaScript code for showing the alert box after form submission
+        document.getElementById("donationForm").addEventListener("submit", function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Show alert box
+            alert("Your post has been submitted successfully!");
+        });
+    </script>
+    <script>
+        // Function to adjust sidebar height based on selected category
+        function adjustSidebarHeight() {
+            var category = document.getElementById("donationCategory").value;
+            var sidebar = document.getElementById("mySidebar");
+
+            // Set the height based on the selected category
+            var height = 0; // Default height
+
+            switch (category) {
+                case "clothing":
+                    height = 1500; // Set the height for clothing category
+                    break;
+                case "toys":
+                    height = 1500; // Set the height for toys category
+                    break;
+                case "food":
+                    height = 1000; // Set the height for food category
+                    break;
+                case "medicalSupplies":
+                    height = 1000; // Set the height for medical supplies category
+                    break;
+                case "schoolSupplies":
+                    var subcategory = document.getElementById("item1").value;
+                    switch (subcategory) {
+                        case "Stationary items":
+                            height = 1000; // Set the height for Stationary items subcategory
+                            break;
+                        case "Books":
+                            height = 1500; // Set the height for Books subcategory
+                            break;
+                        default:
+                            height = 1000; // Default height for school supplies
+                            break;
+                    }
+                    break;
+                case "bloodDonations":
+                    height = 1000; // Set the height for blood donations category
+                    break;
+                case "Teaching":
+                    height = 1000; // Set the height for teaching category
+                    break;
+                case "Medicalcases":
+                    height = 1600; // Set the height for medical cases category
+                    break;
+                // Add cases for other categories as needed
+                default:
+                    // Default height or any additional handling
+                    break;
+            }
+
+            // Set the height of the sidebar
+            sidebar.style.height = height + "px";
+        }
+
+        // Add event listener to trigger the function when category is changed
+        document.getElementById("donationCategory").addEventListener("change", adjustSidebarHeight);
+
+        // Add event listener to trigger the function when subcategory is changed
+        document.getElementById("item1").addEventListener("change", adjustSidebarHeight);
+
+        // Call the function initially to set the sidebar height based on the default selected category
+        adjustSidebarHeight();
+    </script>
+
+
+
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script> <!-- Add this line for JavaScript -->
+
+</body>
+
+</html>

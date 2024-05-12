@@ -10,8 +10,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(90deg, #D4F1F4, #75E6DA);
         }
+
 
         .sidebar {
             min-height: calc(89.5vh - 60px);
@@ -65,8 +65,9 @@
         }
 
         .main-content {
-            margin-left: 200px; /* Adjust according to sidebar width */
-            padding: 20px;
+            transition: margin-left .5s;
+            padding: 16px;
+            margin-left: 0;
         }
 
         .post {
@@ -129,7 +130,221 @@
         .action-button:hover {
             opacity: 0.8;
         }
+
+        .square-button {
+            width: 350px;
+            /* Adjust button width as needed */
+            height: 250px;
+            /* Set height equal to width for square shape */
+            background-color: #fff;
+            /* Button background color */
+            color: #000000;
+            /* Button text color */
+            border: none;
+            /* Remove button border */
+            border-radius: 10px;
+            /* Button border radius */
+            font-size: 18px;
+            /* Button text size */
+            font-weight: bold;
+            /* Button text weight */
+            cursor: pointer;
+            /* Change cursor to pointer on hover */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Add shadow */
+            margin: 10px;
+            /* Adjust spacing between buttons */
+        }
+
+        .square-button:hover {
+            background-color: #6A679E;
+            /* Change background color on hover */
+        }
+
+        .account {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .account h3 {
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .show-button {
+            background-color: #6A679E;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-button {
+            background-color: #ff6347;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show-button:hover,
+        .remove-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .show-button {
+            background-color: #6A679E;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-button {
+            background-color: #ff6347;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show-button:hover,
+        .remove-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Search container styles */
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            margin-right: 10px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6A679E;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #49476E;
+        }
+
+        /* Filter dropdown styles */
+        .filter-dropdown {
+            margin-right: 10px;
+        }
+
+        .filter-dropdown select {
+            padding: 10px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
+    </style>
+
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
@@ -139,10 +354,13 @@
 <body class="sub_page">
 
     <div class="hero_area">
+        <!-- header  starts -->
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <button class="openbtn" onclick="toggleNav()" style="margin-left: -150px;">☰</button>
+                    <!-- Sidebar toggle button -->
+
                     <a class="navbar-brand" href="index.html">
                         <img src="images/Helping Hands.jpeg" alt="" style="margin-left: 100px;">
                         <span style="font-weight: 2000;">
@@ -156,11 +374,14 @@
                         <span class="s-2"> </span>
                         <span class="s-3"> </span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav  ">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="homepage.html"> Home </a>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="admindashboard.html"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
@@ -170,29 +391,37 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-bell fa-lg"></i> <span
                                             class="badge badge-pill badge-danger">3</span>
+                                        <!-- Example: display number of notifications -->
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item">Notification 1</a>
                                         <a class="dropdown-item">Notification 2</a>
                                         <a class="dropdown-item">Notification 3</a>
+                                        <!-- Add more notifications as needed -->
                                     </div>
                                 </li>
+                                </li>
+
                             </ul>
                         </div>
-                    </div>
+
                 </nav>
             </div>
         </header>
+        <!-- end header section -->
     </div>
 
+    <!-- End Header Section -->
+
+    <!-- Sidebar Section -->
     <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute;">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-        <a href="#">Link 4</a>
-    </div>
 
-    <div class="main-content">
+        <a href="ViewOrganizationsAndDonors.html">View Registered Organizations/Donors</a>
+        <a href="ReviewOrganizationAndDonorRequests.html">View Organizations/Donors Request</a>
+        <a href="adminchangepass.html">Change Password</a>
+        <a href="ReviewSubmission.html">Review Submissions</a>
+    </div>
+    <div class="main-content" id="main">
         <button onclick="toggleDonorPosts()">View Donor Posts</button>
         <button onclick="toggleOrganizationPosts()">View Organization Posts</button>
 
@@ -209,7 +438,7 @@
                     Age Group: 3-5 years
                     <img src="images/Doll.jpg" alt="">
                 </p>
-            
+
                 <div class="post-buttons">
                     <button class="action-button accept">Accept</button>
                     <button class="action-button reject">Reject</button>
@@ -239,7 +468,7 @@
                     Item Offered: Clothes(T-shirt)<br>
                     Quantity: 50<br>
                     Size: Medium<br>
-                    Gender: Male 
+                    Gender: Male
                 </p>
                 <div class="post-buttons">
                     <button class="action-button accept">Accept</button>
@@ -297,8 +526,120 @@
             </div>
         </div>
     </div>
+    <section class="info_section layout_padding" id="info_section"
+        style="position: absolute; width: 100%; margin-top: 5%;">
+        <div class="container">
+            <div class="info_contact">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/location-white.png" alt="">
+                            <span>
+                                Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/telephone-white.png" alt="">
+                            <span>
+                                Call : +01212777100
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/envelope-white.png" alt="">
+                            <span>
+                                helping-hands@gmail.com
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-lg-9">
+                    <div class="info_form">
+                        <form action="">
+                            <input type="text" placeholder="Enter your email">
+                            <button>
+                                subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="info_social">
+                        <div>
+                            <a href="">
+                                <img src="images/fb.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/twitter.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/linkedin.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/instagram.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- end info section -->
+
+    <footer class="container-fluid footer_section" id="footer_section"
+        style="position: absolute;width:center; margin-top: 34%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-9 mx-auto">
+                    <p>
+                        &copy; 2024 Software Project
+                        <a href="https://html.design/">Helping Hands Charity Organization</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
+        function toggleNav() {
+            var sidebar = document.getElementById("mySidebar");
+            var main = document.getElementById("main");
+            if (sidebar.style.width === "200px") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "200px";
+                main.style.marginLeft = "200px";
+            }
+        }
+
+
+        function toggleDonorPosts() {
+            var donorPosts = document.getElementById("donor-posts");
+            var organizationPosts = document.getElementById("organization-posts");
+            donorPosts.style.display = "block";
+            organizationPosts.style.display = "none";
+        }
+
+        function toggleOrganizationPosts() {
+            var donorPosts = document.getElementById("donor-posts");
+            var organizationPosts = document.getElementById("organization-posts");
+            donorPosts.style.display = "none";
+            organizationPosts.style.display = "block";
+        }
         function toggleNav() {
             var sidebar = document.getElementById("mySidebar");
             var main = document.getElementById("main");
@@ -324,6 +665,25 @@
             donorPosts.style.display = "none";
             organizationPosts.style.display = "block";
         }
+
+        // Function to handle accepting or rejecting posts
+        function handleAction(postElement, action) {
+            postElement.style.display = "none"; // Hide the post
+            // You can add further functionality here, like sending a request to your server
+            // to update the database indicating the acceptance or rejection of the submission
+        }
+
+        // Get all action buttons
+        var actionButtons = document.querySelectorAll('.action-button');
+
+        // Attach click event listeners to all action buttons
+        actionButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var postElement = button.closest('.post'); // Get the closest post element
+                var action = button.classList.contains('accept') ? 'accept' : 'reject'; // Determine the action
+                handleAction(postElement, action); // Call the function to handle the action
+            });
+        });
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script>

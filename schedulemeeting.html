@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Meeting</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #D4F1F4, #D4F1F4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h2 {
+            font-weight: 500;
+            margin-bottom: 25px;
+            position: relative;
+            font-size: 25px;
+        }
+
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 285px;
+            bottom: -10px;
+            height: 3px;
+            width: 70px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #05445E, #189AB4);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="datetime-local"] {
+            height: 45px;
+            width: calc(100% - 20px);
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"] {
+            background-color: #4C489D;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #6A679E;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Schedule Meeting with Driver</h2>
+        <form id="meetingForm" class="form-group">
+            <label for="meetingDate">Meeting Date and Time:</label>
+            <input type="datetime-local" id="meetingDate" name="meetingDate" required>
+            <input type="submit" value="Schedule Meeting">
+        </form>
+        <div id="countdown"></div>
+    </div>
+
+    <script>
+        document.getElementById("meetingForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the meeting date and time from the form
+            var meetingDate = new Date(document.getElementById("meetingDate").value);
+
+            // Calculate the difference in milliseconds between the current time and the meeting time
+            var timeDiff = meetingDate.getTime() - new Date().getTime();
+
+            // Update the countdown timer
+            updateCountdown(timeDiff);
+
+            // Set a timeout to display a confirmation dialog after the specified time difference
+            setTimeout(function () {
+                var driverArrived = confirm("The driver has arrived. Do you want to redirect to the home page?");
+                if (driverArrived) {
+                    window.location.href = "OrgDashboard.html"; // Redirect to the home page
+                }
+            }, timeDiff > 0 ? timeDiff : 0); // Ensure timeDiff is positive
+        });
+
+        function updateCountdown(timeDiff) {
+            var countdownElement = document.getElementById("countdown");
+
+            // Convert milliseconds to seconds
+            var seconds = Math.floor(timeDiff / 1000);
+
+            // Calculate hours, minutes, and remaining seconds
+            var hours = Math.floor(seconds / 3600);
+            var minutes = Math.floor((seconds % 3600) / 60);
+            var remainingSeconds = seconds % 60;
+
+            // Format the countdown text
+            var countdownText = "Time remaining: ";
+            countdownText += hours > 0 ? hours + "h " : "";
+            countdownText += minutes > 0 ? minutes + "m " : "";
+            countdownText += remainingSeconds + "s";
+
+            // Update the countdown element
+            countdownElement.textContent = countdownText;
+        }
+    </script>
+
+</body>
+
+</html>

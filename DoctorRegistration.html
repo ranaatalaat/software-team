@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Registeration</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="success-message">Congratulations!</span>
+            <span class="success-message">You have registered successfully.</span>
+            <button id="okButton">Ok!</button>
+        </div>
+    </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #map {
+            height: 300px;
+            /* Set the height of the map container */
+            width: 100%;
+            /* Make the map container full-width */
+            margin-bottom: 20px;
+            /* Add some margin at the bottom */
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #D4F1F4, #D4F1F4);
+        }
+
+        h2 {
+            font-weight: normal;
+            /* Set font weight to normal */
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            /* Center the logo */
+            margin-top: 700px;
+            /* Adjust top margin to shift down */
+        }
+
+        .container .logo {
+            width: 150px;
+            /* Adjust width as needed */
+            margin-bottom: 5px;
+            /* Add some spacing below the image */
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            position: relative;
+
+        }
+
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 285px;
+            bottom: -10px;
+            height: 3px;
+            width: 70px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #05445E, #189AB4);
+
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .input-box span.details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input-box input[type="text"],
+        .input-box select {
+            height: 45px;
+            width: calc(100% - 20px);
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input[type="file"] {
+            display: none;
+        }
+
+        .input-box label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            height: 45px;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button {
+            margin-top: 20px;
+        }
+
+        .button input[type="submit"] {
+            background: #4C489D;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button input[type="submit"]:hover {
+            background: #6A679E;
+        }
+
+        .button1 {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid #5C5696;
+            box-shadow: 0px 2px 2px #5C5696;
+            color: #4C489D;
+            box-shadow: 0px 2px 2px #5C5696;
+            padding: 12px 20px;
+            border-radius: 26px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 20px;
+            text-decoration: none;
+            /* Remove default link underline */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button1:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 24px #5C5696;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 600px;
+            /* Adjust width as needed */
+            height: 250px;
+            /* Adjust height to match width for a square */
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Align items with space between */
+            text-align: center;
+            /* Center the content */
+        }
+
+        /* Styles for Ok button */
+        #okButton {
+            background-color: #4C489D;
+            ;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            /* Adjust text size as needed */
+            margin: 20px auto 0;
+            /* Center the button and add space from top */
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        /* Change button background color on hover */
+        #okButton:hover {
+            background-color: #6A679E;
+        }
+
+        /* Additional styles for the close button */
+        .close {
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Styles for the registered successfully message */
+        .success-message {
+            display: block;
+            /* Display as block-level element */
+            font-size: 24px;
+            /* Adjust font size as needed */
+            color: #05445E;
+            /* Adjust color as needed */
+            margin-bottom: 10px;
+            /* Adjust margin as needed */
+        }
+
+
+
+        /* Remaining styles remain unchanged */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://i.postimg.cc/5Nj4dHD2/Helping-hands.png" alt="Logo" class="logo">
+        <div class="title">Doctor Registration</div>
+        <div class="content">
+            <form>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Required Documents</span>
+                        <span class="description">Please upload all required documents here such as (medical
+                            license,id,references, insurance coverage, background checks)</span>
+                        <label for="documents" class="documents-label">
+                            <i class="fas fa-folder-open"></i> Drag and drop folder or click to upload
+                            <input type="file" id="documents" multiple required>
+                        </label>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Clinic Address</span>
+                        <input type="text" placeholder="Enter clinic address" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Area</span>
+                        <input type="text" placeholder="Enter area" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Governorate</span>
+                        <input type="text" placeholder="Enter governorate" required>
+                    </div>
+                    <h2>Pinpoint Your Clinic's Location</h2>
+
+                    <!-- Map container -->
+                    <div id="map" required></div>
+                    <div class="input-box">
+                        <span class="details">Specialty</span>
+                        <input type="text" placeholder="Please specify your specialty" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Pro-bono cases</span>
+                        <input type="text" placeholder="Please specify how many pro-bono cases you can take" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="orgregisterbutton" class="button">
+            <input type="submit" value="Register">
+        </div>
+        <a href="Donor Registeration.html" class="button1" id="backButton">Back</a>
+        </form>
+    </div>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p class="success-message">Registered Successfully!</p>
+            <button id="okButton">Ok!</button>
+        </div>
+    </div>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUP5fw3jw8bvJ7yj9OskV5wdm5sNUbII4&callback=initMap" async
+    defer></script>
+<script>
+    function initMap() {
+        // Default location (Cairo, Egypt)
+        var defaultLocation = { lat: 30.033, lng: 31.233 };
+
+        // Create a new map instance
+        var map = new google.maps.Map(document.getElementById("map"), {
+            center: defaultLocation,
+            zoom: 10 // Adjust zoom level as needed
+        });
+
+        // Create a marker for the default location
+        var marker = new google.maps.Marker({
+            position: defaultLocation,
+            map: map,
+            draggable: true // Allow marker to be dragged by user
+        });
+
+        // Add event listener to update latitude and longitude when marker position changes
+        google.maps.event.addListener(marker, "dragend", function (event) {
+            document.getElementById("latitude").innerHTML = event.latLng.lat();
+            document.getElementById("longitude").innerHTML = event.latLng.lng();
+        });
+    }
+</script>
+<script>
+    // Function to show modal
+    function showModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+    }
+
+    // Function to hide modal
+    function hideModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
+    // Add event listener to the register button
+    document.getElementById("orgregisterbutton").onclick = function () {
+        // Show modal
+        showModal();
+    };
+
+    // Add event listener to the Ok button in modal
+    document.getElementById("okButton").onclick = function () {
+        // Redirect to login.html
+        window.location.href = "login.html";
+    };
+
+
+    window.onclick = function (event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            hideModal();
+        }
+    };
+</script>
+<script>
+    document.getElementById("orgregisterbutton").onclick = function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get all input elements
+        var inputs = document.querySelectorAll(".input-box input, .input-box select");
+
+        // Flag to check if all fields are filled
+        var allFieldsFilled = true;
+
+        // Loop through each input element and check if it's empty
+        inputs.forEach(function (input) {
+            if (!input.value.trim()) { // Check if input value is empty or contains only whitespace
+                allFieldsFilled = false;
+                input.classList.add("error"); // Add a CSS class to highlight the empty field
+            } else {
+                input.classList.remove("error"); // Remove the CSS class if the field is not empty
+            }
+        });
+
+        // If all fields are filled, proceed with registration
+        if (allFieldsFilled) {
+            showModal(); // Show modal
+        } else {
+            alert("Please fill out all fields."); // Show an alert message if any field is empty
+        }
+    };
+</script>
+
+
+</html>

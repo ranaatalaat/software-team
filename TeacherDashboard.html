@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin dashboard</title>
+    <!-- Include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Teacher dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,10 +75,6 @@
             margin-left: 0;
         }
 
-        .header_section {
-            position: relative;
-        }
-
         .logo-title {
             display: flex;
             align-items: center;
@@ -110,7 +108,7 @@
             /* Set height equal to width for square shape */
             background-color: #fff;
             /* Button background color */
-            color: #000000;
+            color: #05445E;
             /* Button text color */
             border: none;
             /* Remove button border */
@@ -138,7 +136,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="sub_page">
@@ -148,12 +145,11 @@
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <button class="openbtn" onclick="toggleNav()" style="margin-left: -150px;">☰</button>
-                    <!-- Sidebar toggle button -->
+                    <button class="openbtn" onclick="toggleNav()">☰</button> <!-- Sidebar toggle button -->
 
                     <a class="navbar-brand" href="index.html">
-                        <img src="images/Helping Hands.jpeg" alt="" style="margin-left: 100px;">
-                        <span style="font-weight: 2000;">
+                        <img src="images/Helping Hands.jpeg" alt="">
+                        <span>
                             Helping Hands
                         </span>
                     </a>
@@ -171,26 +167,10 @@
                                 <li class="nav-item active">
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="homepage.html"> Home </a>
+                                    <a class="nav-link" href="TeacherDashboard.html"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-bell fa-lg"></i> <span
-                                            class="badge badge-pill badge-danger">3</span>
-                                        <!-- Example: display number of notifications -->
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item">Notification 1</a>
-                                        <a class="dropdown-item">Notification 2</a>
-                                        <a class="dropdown-item">Notification 3</a>
-                                        <!-- Add more notifications as needed -->
-                                    </div>
-                                </li>
-                                </li>
 
                             </ul>
                         </div>
@@ -202,30 +182,36 @@
     </div>
 
     <!-- sidebar section starts -->
-    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute;"">
+    <div id="mySidebar" class="sidebar" style="width: 0px; position: absolute;height:1000px;" >
 
-        <a href=" #">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-        <a href="#">Link 4</a>
+        <a href="CreatePostTeacher.html">Create Post</a>
+        <a href="ViewPostTeacher.html">View My Posts</a>
+        <a href="teacherfullfilledposts.html">View My Fulfilled Posts</a>
+        <a href="accountmanagementteacher.html">Account Management</a>
+        <a href="ViewOrganizationTeacher.html">View Organizations</a>
+        <a href="ViewOrgPostsTeacher.html">View Organization Posts</a>
     </div>
     <!-- end sidebar section -->
 
     <!-- Page content -->
     <div id="main">
         <div class="button-row">
-            <button class="square-button"  onclick="viewRegistered()">View Registered Organizations/Donors</button>
-            <button class="square-button" onclick="viewRequested()">View Organizations/Donors requests</button>
+            <button id="createpostvol" class="square-button"><i class="fas fa-edit"></i> Create Post</button>
+            <button id="viewpostsvol" class="square-button"><i class="fas fa-eye"></i> View My Posts</button>
+            <button id="viewfullvol" class="square-button"><i class="fas fa-check-circle"></i> View My Fulfilled
+                Posts</button>
         </div>
         <div class="button-row">
-            <button class="square-button" onclick="changePassword()">Change Password</button>
-            <button class="square-button" onclick="ReviewSubmissionsAdmin()">Review Submissions</button>
+            <button id="accmgtvol" class="square-button"><i class="fas fa-user-cog"></i> Account Management</button>
+            <button id="vieworgvol" class="square-button"><i class="fas fa-users"></i> View Organizations</button>
+            <button id="vieworgpostvol" class="square-button"><i class="fas fa-building"></i> View Organization
+                Posts</button>
         </div>
         <!-- content here -->
     </div>
     <!-- end Page content -->
 
-    <section class="info_section layout_padding" id="info_section" style="position: absolute; width: 100%;">
+    <section class="info_section layout_padding" id="info_section" style="position: absolute; width: 100%; margin-top: 5%;">
         <div class="container">
             <div class="info_contact">
                 <div class="row">
@@ -291,13 +277,14 @@
                     </div>
                 </div>
             </div>
-
+    
         </div>
     </section>
-
+    
     <!-- end info section -->
-
-    <footer class="container-fluid footer_section">
+    
+    <footer class="container-fluid footer_section" id="footer_section"
+        style="position: absolute;width:center; margin-top: 34%;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-9 mx-auto">
@@ -322,26 +309,38 @@
                 main.style.marginLeft = "200px";
             }
         }
-
-        function viewRegistered() {
-            // Redirect to the desired page
-            window.location.href = "ViewOrganizationsAndDonors.html";
-        }
-
-        function viewRequested() {
-            window.location.href="ReviewOrganizationAndDonorRequests.html"
-        }
-
-        function changePassword() {
-            window.location.href="PasswordChanging.html"
-        }
-        function ReviewSubmissionsAdmin() {
-            window.location.href="ReviewSubmissions.html"
-        }
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script> <!-- Add this line for JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById("createpostvol").onclick = function () {
+
+            window.location.href = "CreatePostTeacher.html";
+        };
+        document.getElementById("viewpostsvol").onclick = function () {
+
+            window.location.href = "ViewPostTeacher.html";
+        };
+        document.getElementById("viewfullvol").onclick = function () {
+
+            window.location.href = "teacherfullfilledposts.html";
+        };
+        document.getElementById("accmgtvol").onclick = function () {
+
+            window.location.href = "accountmanagementTeacher.html";
+        };
+        document.getElementById("vieworgvol").onclick = function () {
+
+            window.location.href = "ViewOrganizations.html";
+        };
+        document.getElementById("vieworgpostvol").onclick = function () {
+
+            window.location.href = "ViewOrgPosts.html";
+        };
+    </script>
+
+    <!-- Add this line for JavaScript -->
 
 </body>
 
