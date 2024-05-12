@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Registration Form | CodingLab</title>
+    <link rel="stylesheet"
+        href="C:\fatouh\guc\sem 6\Software Engineering\pr\software\__MACOSX\software\electrochip-html\css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #map {
+            height: 300px;
+            /* Set the height of the map container */
+            width: 100%;
+            /* Make the map container full-width */
+            margin-bottom: 20px;
+            /* Add some margin at the bottom */
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #D4F1F4, #D4F1F4);
+        }
+
+        h2 {
+            font-weight: normal;
+            /* Set font weight to normal */
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            /* Center the logo */
+            margin-top: 100px;
+            /* Adjust top margin to shift down */
+        }
+
+        .container .logo {
+            width: 150px;
+            /* Adjust width as needed */
+            margin-bottom: 5px;
+            /* Add some spacing below the image */
+        }
+
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            position: relative;
+
+        }
+
+        .container .title::before {
+            content: "";
+            position: absolute;
+            left: 285px;
+            bottom: -10px;
+            height: 3px;
+            width: 70px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #05445E, #189AB4);
+
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .input-box span.details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input-box input[type="text"],
+        .input-box select {
+            height: 45px;
+            width: calc(100% - 20px);
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input[type="file"] {
+            display: none;
+        }
+
+        .input-box label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            height: 45px;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .button,
+        .button1 {
+            display: block;
+            /* Change display to block */
+            width: fit-content;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            /* Adjust width to fit content */
+            margin-top: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button input[type="submit"],
+        .button {
+            background: #4C489D;
+            border: none;
+            color: #fff;
+            box-shadow: 0px 2px 2px #5C5696;
+            font-size: 18px;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button input[type="submit"]:hover,
+        .button:hover {
+            background: #6A679E;
+        }
+
+        .button1 {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid #5C5696;
+            color: #4C489D;
+            box-shadow: 0px 2px 2px #5C5696;
+            padding: 12px 20px;
+            border-radius: 26px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 20px;
+            text-decoration: none;
+            /* Remove default link underline */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button1:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+
+
+        /* Remaining styles remain unchanged */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="https://i.postimg.cc/5Nj4dHD2/Helping-hands.png" alt="Logo" class="logo">
+        <div class="title">Teacher Registration</div>
+        <div class="content">
+            <form>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Required Documents</span>
+                        <span class="description">Please upload all required documents here such as (teaching
+                            license,id,references, insurance coverage, background checks)</span>
+                        <label for="documents" class="documents-label">
+                            <i class="fas fa-folder-open"></i> Drag and drop folder or click to upload
+                            <input type="file" id="documents" multiple required>
+                        </label>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Subjects</span>
+                        <input type="text" placeholder="Please specify what subjects you can teach"required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Pro-bono classes</span>
+                        <input type="text" placeholder="Please specify how many pro-bono classes you can teach"required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Pro-bono private tutoring</span>
+                        <input type="text"
+                            placeholder="Please specify how many students you can give private tutoring to " required>
+                    </div>
+                </div>
+                <a href="login.html" class="button" id="tregButton">Register</a>
+                <a href="Donor Registeration.html" class="button1" id="backButton">Back</a>
+
+            </form>
+</body>
+
+</html>
