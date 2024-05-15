@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Org View Donor Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            min-height: calc(89.5vh - 60px);
+            width: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #D4F1F4;
+            overflow-x: hidden;
+            transition: 0s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #0f6b7c;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #0f6b7c;
+        }
+
+        .sidebar .closebtn {
+            position: sticky;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            left: 20px;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            font-size: 30px;
+            /* Increase the font size as desired */
+            cursor: pointer;
+            background-color: #D4F1F4;
+            color: #0f6b7c;
+            padding: 10px 15px;
+            border: none;
+            position: Sticky;
+            left: 0px;
+            top: auto;
+            z-index: 9999;
+            /* Ensure the toggle button is above other elements */
+        }
+
+
+
+        .openbtn:hover {
+            background-color: #D4F1F4;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+            margin-left: 0;
+        }
+
+        .header_section {
+            position: relative;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+            /* Adjust margin to avoid overlap */
+        }
+
+        .logo {
+            margin-right: 10px;
+            max-width: 50px;
+            /* Limit the logo size */
+            height: auto;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            /* Maintain the font size of the title */
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            /* Adjust spacing between rows */
+        }
+
+        .square-button {
+            width: 350px;
+            /* Adjust button width as needed */
+            height: 250px;
+            /* Set height equal to width for square shape */
+            background-color: #fff;
+            /* Button background color */
+            color: #000000;
+            /* Button text color */
+            border: none;
+            /* Remove button border */
+            border-radius: 10px;
+            /* Button border radius */
+            font-size: 18px;
+            /* Button text size */
+            font-weight: bold;
+            /* Button text weight */
+            cursor: pointer;
+            /* Change cursor to pointer on hover */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Add shadow */
+            margin: 10px;
+            /* Adjust spacing between buttons */
+        }
+
+        .square-button:hover {
+            background-color: #6A679E;
+            /* Change background color on hover */
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+
+        .search-input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #D4F1F4;
+            color: #032d40;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-container {
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            margin-top: 20px;
+            margin-left: 500px;
+        }
+
+        .filter-select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* CSS for the list items */
+        .item-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .item {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .post-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .post-content {
+            font-size: 16px;
+        }
+
+        .post-details img {
+            max-width: 300px;
+            /* Ensure images don't exceed their container's width */
+            height: auto;
+            /* Maintain aspect ratio */
+            display: block;
+            /* Prevents unwanted space below images */
+            margin: 10px auto;
+            /* Add margin for spacing */
+            border-radius: 8px;
+            /* Add border radius for rounded corners */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .show-details-button,
+        .redirect-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .additional-filters-container {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body class="sub_page">
+    <div class="hero_area">
+        <!-- Header starts -->
+        <header class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <button class="openbtn" onclick="toggleNav()">☰</button>
+
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/Helping Hands.jpeg" alt="">
+                        <span>Helping Hands</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="s-1"> </span>
+                        <span class="s-2"> </span>
+                        <span class="s-3"> </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                            <ul class="navbar-nav  ">
+                                <li class="nav-item active">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="OrgDashboard.html"> Home </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html"> Log Out </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div id="mySidebar" class="sidebar" style="width: 0px; height: 9500px; position: absolute; margin-bottom: 2000 px">
+
+        <a href="OrganizationDonation_posts.html">Create Post</a>
+        <a href="OrgMyPost.html">View My Posts</a>
+        <a href="OrgFullilledPost.html">View My Fulfilled Posts</a>
+        <a href="AcctMangOrg.html">Account Management</a>
+        <a href="ViewOrgPostsDonor.html">View Donor Posts</a>
+    </div>
+    <div id="main">
+        <div class="filter-container">
+            <select class="filter-select" id="filterSelect">
+                <option value="all">All</option>
+                <option value="clothes">Clothes</option>
+                <option value="school">School Supplies</option>
+                <option value="toys">Toys</option>
+                <option value="medical">Medical Supplies</option>
+                <option value="teaching">Teaching post</option>
+                <option value="doctor">Doctor visit</option>
+                <option value="food">Food</option>
+            </select>
+        </div>
+
+        <div id="additionalFilters"></div>
+        <div id="additionalFilters2"></div>
+        <div id="additionalFilters3"></div>
+        <div id="additionalFilters4"></div>
+        <div id="additionalFilters5"></div>
+        <div id="additionalFilters6"></div>
+        <div id="additionalFilters7"></div>
+        <div id="additionalFilters8"></div>
+        <div id="additionalFilters9"></div>
+
+        <div class="filter-container" id="secondFilterContainer" style="display:none;">
+            <select class="filter-select" id="secondFilterSelect">
+                <!-- Second filter options will be dynamically generated here -->
+            </select>
+        </div>
+
+        <script>
+            function toggleNav() {
+                var sidebar = document.getElementById("mySidebar");
+                var main = document.getElementById("main");
+                if (sidebar.style.width === "200px") {
+                    sidebar.style.width = "0";
+                    main.style.marginLeft = "0";
+                } else {
+                    sidebar.style.width = "200px";
+                    main.style.marginLeft = "200px";
+                }
+            }
+        </script>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/script.js"></script> <!-- Add this line for JavaScript -->
+
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchAccounts()" placeholder="Search for item..">
+            <button type="button" onclick="searchAccounts()">Search</button>
+        </div>
+        <div class="post">
+            <div class="posts-container">
+                <!-- Example post cards -->
+                <div class="post-card">
+                    <h2 class="post-title">Clothes Donation Request</h2>
+                    <div class="post-details" style="display:none;">
+
+                        <strong>Item Description:</strong> Shorts<br>
+                        <strong>Season:</strong> Winter <br>
+                        <strong>Gender:</strong> Male<br>
+                        <strong>Quantity :</strong> 30 shorts <br>
+                        <strong>Material :</strong> Cotton <br>
+                        <strong>Age :</strong> Teenagers <br>
+                    </div>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Clothes Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> Pants<br>
+                        <strong>Season:</strong> Summer <br>
+                        <strong>Gender:</strong> Female<br>
+                        <strong>Quantity :</strong> 20 pants <br>
+                        <strong>Material :</strong> Leather <br>
+                        <strong>Age :</strong> Adults <br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Clothes Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> T-Shirts<br>
+                        <strong>Season:</strong> Spring<br>
+                        <strong>Gender:</strong> Unisex<br>
+                        <strong>Quantity :</strong> 40 T-shirts <br>
+                        <strong>Material :</strong> Wool <br>
+                        <strong>Age :</strong> Toddlers <br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">School Supplies Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> Notebooks and Pencils<br>
+                        <strong>Type:</strong> Stationery<br>
+                        <strong>Quantity :</strong> 200 Notebooks, 300 Pencils<br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">School Supplies Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> Books <br>
+                        <strong>Author:</strong> Coleen hoover<br>
+                        <strong>Type :</strong> Mystery <br>
+                        <strong>Language :</strong> English <br>
+                        <strong>Type :</strong> 25 books <br>
+                        <strong>Summary :</strong> Book talks about a mysterious love story <br>
+                        <img src="images/book.jpg" alt="Clothing Donation Image">
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">School Supplies Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> pens <br>
+                        <strong>Type:</strong> Stationery<br>
+                        <strong>Quantity :</strong> 250 pens<br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Toys Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> Stuffed Animals<br>
+                        <strong>Age :</strong> Toddlers <br>
+                        <strong>Quantity :</strong> 100<br>
+                        <strong>Gender :</strong> Male<br>
+                        <strong>Catergory :</strong> stuffed toys<br>
+                        <img src="images/Cow.jpg" alt="Clothing Donation Image">
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Toys Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> Legos<br>
+                        <strong>Age :</strong> Toddlers <br>
+                        <strong>Quantity :</strong> 40<br>
+                        <strong>Gender :</strong> Female<br>
+                        <strong>Catergory :</strong> board games<br>
+                        <img src="images/legoos.jpg" alt="Clothing Donation Image">
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Toys Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Item Description:</strong> balls<br>
+                        <strong>Age :</strong> Toddlers <br>
+                        <strong>Quantity :</strong> 30<br>
+                        <strong>Gender :</strong> Unisex<br>
+                        <strong>Catergory :</strong> sports<br>
+                        <img src="images/ball.jpg" alt="Clothing Donation Image">
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Medical Supplies Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Device Type:</strong> X-ray machines<br>
+                        <strong>Quantity :</strong> 2 X-ray machines<br>
+                        <strong>Use:</strong> view broken bones <br>
+                        <strong>Category:</strong> medical equipment<br>
+                        <img src="images/xray.png" alt="Clothing Donation Image">
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Medical Supplies Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Device Type:</strong> MRI machines<br>
+                        <strong>Quantity :</strong> 1 MRI machines<br>
+                        <strong>Use:</strong> check stomach pain <br>
+                        <strong>Category:</strong> medical equipment<br>
+                        <img src="images/mri.jpg" alt="Clothing Donation Image">
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Medical Supplies Donation Request</h2>
+                    <p class="post-details">
+                        <strong>Name :</strong> Panadol<br>
+                        <strong>Quantity :</strong> 50 boxes<br>
+                        <strong>Medical Use:</strong> pain killer <br>
+                        <strong>Category:</strong> medication<br>
+
+                        <img src="images/panadol.jpg" alt="Clothing Donation Image">
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Teaching post Request</h2>
+                    <p class="post-details">
+                        <strong>Subject:</strong> English<br>
+                        <strong>Area:</strong> El Rehab<br>
+                        <strong>Number of students:</strong> 45 <br>
+                        <strong>Governorate:</strong>Cairo <br>
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetailsmap(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Teaching post Request</h2>
+                    <p class="post-details">
+                        <strong>Subject:</strong> Math<br>
+                        <strong>Area:</strong> New Cairo<br>
+                        <strong>Number of students:</strong> 55 <br>
+                        <strong>Governorate:</strong>Cairo <br>
+
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetailsmap(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Teaching post Request</h2>
+                    <p class="post-details">
+                        <strong>Subject:</strong> Science<br>
+                        <strong>Area:</strong> Madinaty<br>
+                        <strong>Number of students:</strong> 200<br>
+                        <strong>Governorate:</strong>Cairo <br>
+                        <strong>School location:</strong>
+
+
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetailsmap(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Doctor visit Request</h2>
+                    <p class="post-details">
+                        <strong>Specialty:</strong> OBGYN<br>
+                        <strong>Hospital name:</strong> El Shifa<br>
+                        <strong>Area:</strong> New Cairo<br>
+                        <strong>Governorate:</strong> Cairo<br>
+                        <strong>Location:</strong>
+                    <div class="col-md-6" id="wmap" style="display: none;">
+                        <div class="map_container">
+                            <div class="map-responsive">
+                                <iframe
+                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDUP5fw3jw8bvJ7yj9OskV5wdm5sNUbII4&q=German+University+in+Cairo"
+                                    width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetailsmap(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Doctor visit Request</h2>
+                    <p class="post-details">
+                        <strong>Specialty:</strong> Ortho<br>
+                        <strong>Hospital name:</strong> Air specialized Hospital<br>
+                        <strong>Area:</strong> New Cairo<br>
+                        <strong>Governorate:</strong> Cairo<br>
+                        <strong>Location:</strong>
+                    <div class="col-md-6" id="wmap" style="display: none;">
+                        <div class="map_container">
+                            <div class="map-responsive">
+                                <iframe
+                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDUP5fw3jw8bvJ7yj9OskV5wdm5sNUbII4&q=German+University+in+Cairo"
+                                    width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetailsmap(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Doctor visit Request</h2>
+                    <p class="post-details">
+                        <strong>Specialty:</strong> Dentist<br>
+                        <strong>Hospital name:</strong>Manchester Hospital <br>
+                        <strong>Area:</strong> Old trafford<br>
+                        <strong>Governorate:</strong> Manchester<br>
+                        <strong>Location:</strong>
+                    <div class="col-md-6" id="wmap" style="display: none;">
+                        <div class="map_container">
+                            <div class="map-responsive">
+                                <iframe
+                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDUP5fw3jw8bvJ7yj9OskV5wdm5sNUbII4&q=German+University+in+Cairo"
+                                    width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetailsmap(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Food Request</h2>
+                    <p class="post-details">
+                        <strong>Item:</strong> Mango<br>
+                        <strong>Quantity:</strong> 20 kilo<br>
+                        <strong>Catergory:</strong> Fruit<br>
+                        <strong>Exp Date:</strong> 23/2/2024<br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h2 class="post-title">Food Request</h2>
+                    <p class="post-details">
+                        <strong>Item:</strong> Cucumbers<br>
+                        <strong>Quantity:</strong> 40 kilo<br>
+                        <strong>Catergory:</strong> Vegetables<br>
+                        <strong>Exp Date:</strong> 23/3/2025<br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+
+                <div class="post-card">
+                    <h2 class="post-title">Food Request</h2>
+                    <p class="post-details">
+                        <strong>Item:</strong> bread<br>
+                        <strong>Quantity:</strong> 22<br>
+                        <strong>Catergory:</strong> Baked goods<br>
+                        <strong>Exp Date:</strong> 23/4/2025<br>
+                    </p>
+                    <div class="button-container">
+                        <button class="show-details-button" onclick="toggleDetails(this)">Show Details</button>
+                        <button class="redirect-button" onclick="redirectToPage()">Donate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="info_section layout_padding" id="info_section"
+        style="position: absolute; width: 100%; margin-top: 5%;">
+        <div class="container">
+            <div class="info_contact">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/location-white.png" alt="">
+                            <span>
+                                Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/telephone-white.png" alt="">
+                            <span>
+                                Call : +01212777100
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/envelope-white.png" alt="">
+                            <span>
+                                helping-hands@gmail.com
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-lg-9">
+                    <div class="info_form">
+                        <form action="">
+                            <input type="text" placeholder="Enter your email">
+                            <button>
+                                subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="info_social">
+                        <div>
+                            <a href="">
+                                <img src="images/fb.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/twitter.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/linkedin.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/instagram.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer class="container-fluid footer_section" id="footer_section"
+        style="position: absolute;width:center; margin-top: 34%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-9 mx-auto">
+                    <p>
+                        &copy; 2024 Software Project
+                        <a href="https://html.design/">Helping Hands Charity Organization</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function toggleNav() {
+            var sidebar = document.getElementById("mySidebar");
+            var main = document.getElementById("main");
+            if (sidebar.style.width === "200px") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "200px";
+                main.style.marginLeft = "200px";
+                adjustSidebarHeight(); // Call the function to adjust sidebar height
+            }
+        }
+        function toggleDetails(button) {
+            var details = button.parentElement.previousElementSibling; // Get the details element
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block'; // Show details
+                button.textContent = 'Hide Details'; // Change button text
+            } else {
+                details.style.display = 'none'; // Hide details
+                button.textContent = 'Show Details'; // Change button text
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var details = document.querySelectorAll('.post-details');
+            details.forEach(function (detail) {
+                detail.style.display = 'none';
+            });
+        });
+
+        function toggleDetailsmap(button) {
+            var details = button.parentElement.parentElement.querySelector('.post-details'); // Get the details element
+            var mapContainer = button.parentElement.parentElement.querySelector('.col-md-6#wmap'); // Get the map container
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block'; // Show details
+                mapContainer.style.display = 'block'; // Show map
+                button.textContent = 'Hide Details'; // Change button text
+            } else {
+                details.style.display = 'none'; // Hide details
+                mapContainer.style.display = 'none'; // Hide map
+                button.textContent = 'Show Details'; // Change button text back to 'Show Details'
+            }
+
+        }
+        function redirectToPage() {
+            // Redirect to another page
+            window.location.href = 'schedulemeeting.html'; // Replace 'DonorFullfillDonationPost.html' with your desired URL
+        }
+    </script>
+    <script>
+        function searchAccounts() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var cards = document.querySelectorAll(".post-card");
+            cards.forEach(function (card) {
+                var title = card.querySelector(".post-title").innerText.toLowerCase();
+                var details = card.querySelector(".post-details").innerText.toLowerCase();
+                if (title.includes(input) || details.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+    <script>
+        document.getElementById('filterSelect').addEventListener('change', function () {
+            const selectedCategory = this.value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const category = card.querySelector('.post-title').textContent.split(' ')[0].toLowerCase(); // Extracting the category from the post title
+
+                if (selectedCategory === 'all' || selectedCategory === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show or hide additional filters based on selected category
+            if (selectedCategory === 'toys') {
+                showToysAgeFilter();
+                showToysGenderFilter();
+                showToysCategoryFilter();
+            } else {
+                hideToysAgeFilter();
+                hideToysGenderFilter();
+                hideToysCategoryFilter();
+            }
+            if (selectedCategory === 'food') {
+                showFoodFilter();
+                document.getElementById('FoodFilter').addEventListener('change', filterFoodByType);
+            } else {
+                hideFoodFilter();
+            }
+            if (selectedCategory === 'school') {
+                showSchoolType();
+
+                document.getElementById('SchoolFilter').addEventListener('change', filterSchool);
+            } else {
+                hideSchoolType();
+            }
+            if (selectedCategory === 'medical') {
+                showMedicalType();
+                document.getElementById('MedicalFilter').addEventListener('change', filtermedical);
+            } else {
+                hideMedicalType();
+            }
+            if (selectedCategory === 'clothes') {
+                showClothesAgeFilter();
+                showClothesGenderFilter();
+                showClothesSeasonFilter();
+            } else {
+                hideClothesAgeFilter();
+                hideClothesGenderFilter();
+                hideClothesSeasonFilter();
+            }
+
+
+        });
+
+        // Function to show additional filter for "Toys Age"
+        function showToysAgeFilter() {
+            const additionalFilters = document.getElementById('additionalFilters');
+            additionalFilters.innerHTML = `<label>Age:</label>
+                                    <select id="toysAgeFilter" onchange="filterClothesByAge()">
+                                        <option value="all">All</option>
+                                        <option value="infants">Infants</option>
+                                        <option value="toddlers">Toddlers</option>
+                                        <option value="teenagers">Teenagers</option>
+                                    </select>`;
+            additionalFilters.style.display = 'block'; // Make the additional filter visible
+        }
+
+        // Function to show additional filter for "Toys Gender"
+        function showToysGenderFilter() {
+            const additionalFilters = document.getElementById('additionalFilters2');
+            additionalFilters.innerHTML = `<label>Gender:</label>
+                                    <select id="toysGenderFilter" onchange="filterClothessByGender()">
+                                        <option value="all">All</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="unisex">Unisex</option>
+                                    </select>`;
+            additionalFilters.style.display = 'block'; // Make the additional filter visible
+        }
+
+        // Function to show additional filter for "Toys Category"
+        function showToysCategoryFilter() {
+            const additionalFilters = document.getElementById('additionalFilters3');
+            additionalFilters.innerHTML = `<label>Category:</label>
+                                         <select id="toysCategoryFilter" onchange="filterToysByCategory()">
+                                       <option value="all">All</option>
+                                        <option value="board games">Board games</option>
+                                        <option value="stuffed toys">Stuffed toys</option>
+                                        <option value="doll">Doll</option>
+                                        <option value="sports">Sports</option>
+                                        <option value="cars">Cars</option>
+                                        <option value="outdoors">Outdoors</option>
+                                   
+                                        
+                        </select>`;
+
+            additionalFilters.style.display = 'block'; // Make the additional filter visible
+        }
+        function showFoodFilter() {
+            const additionalFilters = document.getElementById('additionalFilters4');
+            additionalFilters.innerHTML = `<label>Food Type:</label>
+                                    <select id="FoodFilter" onchange="filterbyFood()">
+                                        <option value="all">All</option>
+                                        <option value="Fruit">Fruits</option>
+                                        <option value="Baked goods">Baked Goods</option>
+                                        <option value="Vegetables">Vegtables</option>
+                                        <option value="canned foods">Canned Foods</option>
+                                        <option value="fresh meal">Fresh Meal</option
+                                    </select>`;
+            additionalFilters.style.display = 'block'; // Make the additional filter visible
+        }
+        function showSchoolType() {
+            const additionalFilters = document.getElementById('additionalFilters5');
+            additionalFilters.innerHTML = `<label> Type:</label>
+                                    <select id="SchoolFilter" onchange="filterSchoolType()">
+                                        <option value="all">All</option>
+                                        <option value="book">Books</option>
+                                        <option value="Stationery">Stationery</option>
+                                    </select>`;
+            additionalFilters.style.display = 'block'; // Make the additional filter visible
+        }
+        function showMedicalType() {
+            const additionalFilters = document.getElementById('additionalFilters6');
+            additionalFilters.innerHTML = `<label> Type:</label>
+                                    <select id="MedicalFilter" onchange="filterMedicalType()">
+                                        <option value="all">All</option>
+                                        <option value="medical equipment">Medical Equipment</option>
+                                        <option value="medication">Medication</option>
+                                    </select>`;
+            additionalFilters.style.display = 'block'; // Make the additional filter visible
+        }
+        function showClothesAgeFilter() {
+                const additionalFilters = document.getElementById('additionalFilters7');
+                additionalFilters.innerHTML = `<label>Age:</label>
+                                    <select id="clothesAgeFilter" onchange="filterClothesByAge()">
+
+                                        <option value="all">All</option>
+                                        <option value="infants">Infants</option>
+                                        <option value="toddlers">Toddlers</option>
+                                        <option value="teenagers">Teenagers</option>
+                                        <option value="adult">Adult</option>
+                                        <option value="senior">Senior</option>
+                                        
+                                    </select>`;
+                additionalFilters.style.display = 'block'; // Make the additional filter visible
+            }
+
+            // Function to show additional filter for "Toys Gender"
+            function showClothesGenderFilter() {
+                const additionalFilters = document.getElementById('additionalFilters8');
+                additionalFilters.innerHTML = `<label>Gender:</label>
+                                    <select id="clothesGenderFilter" onchange="filterClothesByGender()">
+                                        <option value="all">All</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="unisex">Unisex</option>
+                                    </select>`;
+                additionalFilters.style.display = 'block'; // Make the additional filter visible
+            }
+
+            // Function to show additional filter for "Toys Category"
+            function showClothesSeasonFilter() {
+                const additionalFilters = document.getElementById('additionalFilters9');
+                additionalFilters.innerHTML = `<label>Season:</label>
+                                   
+                                         <select id="clothesSeasonFilter" onchange="filterClothesBySeason()">
+                                       <option value="all">All</option>
+                                        <option value="summer">Summer</option>
+                                        <option value="winter">Winter</option>
+                                        <option value="autumn">Autumn</option>
+                                        <option value="spring">Spring</option>
+                        </select>`;
+
+                additionalFilters.style.display = 'block'; // Make the additional filter visible
+            }   
+
+        // Function to hide additional filter for "Toys Age"
+        function hideToysAgeFilter() {
+            const additionalFilters = document.getElementById('additionalFilters');
+            additionalFilters.innerHTML = ''; // Clear the additional filter
+            additionalFilters.style.display = 'none'; // Hide the additional filter
+        }
+
+        // Function to hide additional filter for "Toys Gender"
+        function hideToysGenderFilter() {
+            const additionalFilters = document.getElementById('additionalFilters2');
+            additionalFilters.innerHTML = ''; // Clear the additional filter
+            additionalFilters.style.display = 'none'; // Hide the additional filter
+        }
+
+        // Function to hide additional filter for "Toys Category"
+        function hideToysCategoryFilter() {
+            const additionalFilters = document.getElementById('additionalFilters3');
+            additionalFilters.innerHTML = ''; // Clear the additional filter
+            additionalFilters.style.display = 'none'; // Hide the additional filter
+        }
+
+        function hideFoodFilter() {
+            const additionalFilters = document.getElementById('additionalFilters4');
+            additionalFilters.innerHTML = ''; // Clear the additional filter
+            additionalFilters.style.display = 'none'; // Hide the additional filter
+        }
+        function hideSchoolType() {
+            const additionalFilters = document.getElementById('additionalFilters5');
+            additionalFilters.innerHTML = ''; // Clear the additional filter
+            additionalFilters.style.display = 'none'; // Hide the additional filter
+        }
+        function hideMedicalType() {
+            const additionalFilters = document.getElementById('additionalFilters6');
+            additionalFilters.innerHTML = ''; // Clear the additional filter
+            additionalFilters.style.display = 'none'; // Hide the additional filter
+        }
+         function hideClothesAgeFilter() {
+                const additionalFilters = document.getElementById('additionalFilters7');
+                additionalFilters.innerHTML = ''; // Clear the additional filter
+                additionalFilters.style.display = 'none'; // Hide the additional filter
+            }
+
+            // Function to hide additional filter for "Toys Gender"
+        function hideClothesGenderFilter() {
+                const additionalFilters = document.getElementById('additionalFilters8');
+                additionalFilters.innerHTML = ''; // Clear the additional filter
+                additionalFilters.style.display = 'none'; // Hide the additional filter
+            }
+
+            // Function to hide additional filter for "Toys Category"
+        function hideSchoolSeasonFilter() {
+                const additionalFilters = document.getElementById('additionalFilters9');
+                additionalFilters.innerHTML = ''; // Clear the additional filter
+                additionalFilters.style.display = 'none'; // Hide the additional filter
+            }
+
+
+        // Function to handle additional filter for "Toys Age"
+        function filterToysByAge() {
+            const selectedAge = document.getElementById('toysAgeFilter').value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const category = card.querySelector('.post-title').textContent.split(' ')[0].toLowerCase();
+
+                // Check if the post is in the "Toys" category
+                if (category === 'toys') {
+                    const ageDetails = card.querySelector('.post-details').textContent.toLowerCase();
+
+                    if (selectedAge === 'all' || ageDetails.includes(selectedAge)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Function to handle additional filter for "Toys Gender"
+        function filterToysByGender() {
+            const selectedGender = document.getElementById('toysGenderFilter').value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const category = card.querySelector('.post-title').textContent.split(' ')[0].toLowerCase();
+
+                // Check if the post is in the "Toys" category
+                if (category === 'toys') {
+                    const genderDetails = card.querySelector('.post-details').textContent.toLowerCase();
+
+                    if (selectedGender === 'all' || genderDetails.includes(selectedGender)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Function to handle additional filter for "Toys Category"
+        function filterToysByCategory() {
+            const selectedCategory = document.getElementById('toysCategoryFilter').value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const title = card.querySelector('.post-title').textContent.toLowerCase();
+                const details = card.querySelector('.post-details').innerHTML.toLowerCase();
+
+                if (title.includes('toys')) {
+                    if (selectedCategory === 'all' || details.includes(selectedCategory.toLowerCase())) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+        function filterFoodByType() {
+            const selectedCategory = document.getElementById('FoodFilter').value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const title = card.querySelector('.post-title').textContent.toLowerCase();
+                const details = card.querySelector('.post-details').innerHTML.toLowerCase();
+
+                if (title.includes('food')) {
+                    if (selectedCategory === 'all' || details.includes(selectedCategory.toLowerCase())) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+        function filterSchoolType() {
+            const selectedCategory = document.getElementById('SchoolFilter').value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const title = card.querySelector('.post-title').textContent.toLowerCase();
+                const details = card.querySelector('.post-details').innerHTML.toLowerCase();
+
+                if (title.includes('school')) {
+                    if (selectedCategory === 'all' || details.includes(selectedCategory.toLowerCase())) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+        function filterMedicalType() {
+            const selectedCategory = document.getElementById('MedicalFilter').value;
+            const postCards = document.querySelectorAll('.post-card');
+
+            postCards.forEach(function (card) {
+                const title = card.querySelector('.post-title').textContent.toLowerCase();
+                const details = card.querySelector('.post-details').innerHTML.toLowerCase();
+
+                if (title.includes('medical')) {
+                    if (selectedCategory === 'all' || details.includes(selectedCategory.toLowerCase())) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+        function filterClothesByAge() {
+                const selectedAge = document.getElementById('clothesAgeFilter').value;
+                const postCards = document.querySelectorAll('.post-card');
+
+                postCards.forEach(function (card) {
+                    const category = card.querySelector('.post-title').textContent.split(' ')[0].toLowerCase();
+
+                    // Check if the post is in the "Clothes" category
+                    if (category === 'clothes') {
+                        const ageDetails = card.querySelector('.post-details').textContent.toLowerCase();
+
+                        if (selectedAge === 'all' || ageDetails.includes(selectedAge)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            function filterClothesByGender() {
+                const selectedGender = document.getElementById('clothesGenderFilter').value;
+                const postCards = document.querySelectorAll('.post-card');
+
+                postCards.forEach(function (card) {
+                    const category = card.querySelector('.post-title').textContent.split(' ')[0].toLowerCase();
+
+                    // Check if the post is in the "Clothes" category
+                    if (category === 'clothes') {
+                        const genderDetails = card.querySelector('.post-details').textContent.toLowerCase();
+
+                        if (selectedGender === 'all' || genderDetails.includes(selectedGender)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            function filterClothesBySeason() {
+                const selectedSeason = document.getElementById('clothesSeasonFilter').value;
+                const postCards = document.querySelectorAll('.post-card');
+
+                postCards.forEach(function (card) {
+                    const category = card.querySelector('.post-title').textContent.split(' ')[0].toLowerCase();
+
+                    // Check if the post is in the "Clothes" category
+                    if (category === 'clothes') {
+                        const seasonDetails = card.querySelector('.post-details').textContent.toLowerCase();
+
+                        if (selectedSeason === 'all' || seasonDetails.includes(selectedSeason)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            }
+    </script>
+
+
+</body>
+
+</html>

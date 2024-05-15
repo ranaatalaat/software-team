@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organization dashboard</title>
+    <title>View Organization Teacher</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Custom styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -48,26 +53,22 @@
 
         .openbtn {
             font-size: 30px;
-            /* Increase the font size as desired */
             cursor: pointer;
             background-color: #D4F1F4;
             color: #0f6b7c;
             padding: 10px 15px;
             border: none;
-            position: Sticky;
+            position: sticky;
             left: 0px;
             top: auto;
             z-index: 9999;
-            /* Ensure the toggle button is above other elements */
         }
-
-
 
         .openbtn:hover {
             background-color: #D4F1F4;
         }
 
-        #main {
+        .main-content {
             transition: margin-left .5s;
             padding: 16px;
             margin-left: 0;
@@ -77,68 +78,141 @@
             position: relative;
         }
 
-        .logo-title {
-            display: flex;
-            align-items: center;
-            margin-left: 50px;
-            /* Adjust margin to avoid overlap */
-        }
-
-        .logo {
-            margin-right: 10px;
-            max-width: 50px;
-            /* Limit the logo size */
-            height: auto;
-        }
-
-        .navbar-brand {
-            font-size: 20px;
-            /* Maintain the font size of the title */
-        }
-
         .button-row {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
-            /* Adjust spacing between rows */
         }
 
         .square-button {
             width: 350px;
-            /* Adjust button width as needed */
             height: 250px;
-            /* Set height equal to width for square shape */
             background-color: #fff;
-            /* Button background color */
             color: #000000;
-            /* Button text color */
             border: none;
-            /* Remove button border */
             border-radius: 10px;
-            /* Button border radius */
             font-size: 18px;
-            /* Button text size */
             font-weight: bold;
-            /* Button text weight */
             cursor: pointer;
-            /* Change cursor to pointer on hover */
             transition: background-color 0.3s ease;
-            /* Smooth transition for background color */
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            /* Add shadow */
             margin: 10px;
-            /* Adjust spacing between buttons */
         }
 
         .square-button:hover {
             background-color: #6A679E;
-            /* Change background color on hover */
+        }
+
+        .account {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .account h3 {
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .show-button,
+        .remove-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show-button {
+            background-color: #6A679E;
+            color: #fff;
+        }
+
+        .remove-button {
+            background-color: #ff6347;
+            color: #fff;
+        }
+
+        .show-button:hover,
+        .remove-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            /* Align items to the right */
+            margin-right: 20px;
+            /* Add some margin to separate from the edge */
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            /* Add some margin between input and button */
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6A679E;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/responsive.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="sub_page">
@@ -171,12 +245,12 @@
                                 <li class="nav-item active">
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="OrgDashboard.html"> Home </a>
+                                    <a class="nav-link" href="TeacherDashboard.html"> Home </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
                                 </li>
-                               
+
 
                             </ul>
                         </div>
@@ -187,42 +261,39 @@
         <!-- end header section -->
     </div>
 
-    <!-- sidebar section starts -->
-    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute;"">
+    <!-- End Header Section -->
 
-        <a href=" OrganizationDonation_posts.html">Create Post</a>
-        <a href="OrgMyPost.html">View My Posts</a>
-        <a href="OrgFullilledPost.html">View My Fulfilled Posts</a>
-        <a href="AcctMangOrg.html">Account Management</a>
-        <a href="ViewOrgPostsDonor.html">View Donor Posts</a>
+    <!-- Sidebar Section -->
+    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1500px; position: absolute;">
+
+        <a href="ViewOrganizationsAndDonors.html">View Registered Organizations/Donors</a>
+        <a href="ReviewOrganizationAndDonorRequests.html">View Organizations/Donors Request</a>
+        <a href="adminchangepass.html">Change Password</a>
+        <a href="ReviewSubmissions.html">Review Submissions</a>
     </div>
-    <!-- end sidebar section -->
+    <!-- End Sidebar Section -->
 
-    <!-- Page content -->
-    <div id="main">
+    <div class="main-content" id="main">
         <div class="button-row">
-            <a href="OrganizationDonation_posts.html">
-                <button class="square-button"> Create Donation Post </button>
-            </a>
-            <a href="AcctMangOrg.html">
-                <button class="square-button">Account Management</button>
-            </a>
-            <a href="OrgFullilledPost.html">
-                <button class="square-button">Fulfilled Posts</button>
-            </a>
+
 
         </div>
-        <div class="button-row">
-            <a href="OrgMyPost.html">
-                <button class="square-button">view my posts</button>
-            </a>
-            <a href="ViewOrgPostsDonor.html">
-            <button class="square-button">view Donor posts</button></a>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchAccounts()" placeholder="Search for names..">
+            <button type="button" onclick="searchAccounts()">Search</button>
         </div>
-        <!-- content here -->
+        <div id="account-list">
+            <!-- Accounts will be displayed here -->
+        </div>
     </div>
-    <!-- end Page content -->
-
+    <div class="popup" id="account-popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <div id="popup-details">
+                <!-- Account details will be displayed here -->
+            </div>
+        </div>
+    </div>
     <section class="info_section layout_padding" id="info_section"
         style="position: absolute; width: 100%; margin-top: 5%;">
         <div class="container">
@@ -309,6 +380,7 @@
             </div>
         </div>
     </footer>
+
     <script>
         function toggleNav() {
             var sidebar = document.getElementById("mySidebar");
@@ -321,11 +393,82 @@
                 main.style.marginLeft = "200px";
             }
         }
-    </script>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/script.js"></script> <!-- Add this line for JavaScript -->
 
+        var donorsData = [
+            { name: "John Doe", email: "john@example.com", age: 30, address: "123 Street, City" },
+            { name: "Alice Smith", email: "alice@example.com", age: 25, address: "456 Avenue, Town" },
+            { name: "Bob Johnson", email: "bob@example.com", age: 35, address: "789 Road, Village" },
+            { name: "Emily Brown", email: "emily@example.com", age: 40, address: "101 Lane, County" }
+        ];
+
+        var organizationsData = [
+            { name: "Charity Organization A", email: "org1@example.com", age: 10, address: "123 Street, City" },
+            { name: "Charity Organization B", email: "org2@example.com", age: 15, address: "456 Avenue, Town" },
+            { name: "Charity Organization C", email: "org3@example.com", age: 20, address: "789 Road, Village" },
+            { name: "Charity Organization D", email: "org4@example.com", age: 45, address: "101 Lane, County" }
+        ];
+
+        function displayAccounts(accounts) {
+            var accountList = document.getElementById("account-list");
+            accountList.innerHTML = "";
+
+            accounts.forEach(function (account, index) {
+                var accountDiv = document.createElement("div");
+                accountDiv.classList.add("account");
+
+                var accountInfo = `
+                    <h3>${account.name}</h3>
+                    <p>Email: ${account.email}</p>
+                    <p>Age: ${account.age}</p>
+                    <p>Address: ${account.address}</p>
+                    <div class="buttons">
+                        <button class="show-button" onclick="showAccountDetails('${account.name}', '${account.email}', ${account.age}, '${account.address}')">Show Account</button>
+                     
+                    </div>
+                `;
+
+                accountDiv.innerHTML = accountInfo;
+                accountList.appendChild(accountDiv);
+            });
+        }
+
+        function showAccountDetails(name, email, age, address) {
+            var details = `
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Age: ${age}</p>
+                <p>Address: ${address}</p>
+            `;
+            document.getElementById("popup-details").innerHTML = details;
+            document.getElementById("account-popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("account-popup").style.display = "none";
+        }
+
+
+
+        function searchAccounts() {
+            var input, filter, accountList, accounts, accountDiv, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            accountList = document.getElementById("account-list");
+            accounts = accountList.getElementsByClassName("account");
+            for (i = 0; i < accounts.length; i++) {
+                accountDiv = accounts[i];
+                txtValue = accountDiv.textContent || accountDiv.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    accountDiv.style.display = "";
+                } else {
+                    accountDiv.style.display = "none";
+                }
+            }
+        }
+
+        // Call displayAccounts after function definition
+        displayAccounts(organizationsData);
+    </script>
 </body>
 
 </html>

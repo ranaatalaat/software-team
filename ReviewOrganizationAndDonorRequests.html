@@ -104,9 +104,9 @@
         }
 
         .square-button {
-            width: 350px;
+            width: 250px;
             /* Adjust button width as needed */
-            height: 250px;
+            height: 70px;
             /* Set height equal to width for square shape */
             background-color: #fff;
             /* Button background color */
@@ -116,7 +116,7 @@
             /* Remove button border */
             border-radius: 10px;
             /* Button border radius */
-            font-size: 18px;
+            font-size: 16px;
             /* Button text size */
             font-weight: bold;
             /* Button text weight */
@@ -243,20 +243,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-bell fa-lg"></i> <span class="badge badge-pill badge-danger">3</span>
-                                        <!-- Example: display number of notifications -->
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item">Notification 1</a>
-                                        <a class="dropdown-item">Notification 2</a>
-                                        <a class="dropdown-item">Notification 3</a>
-                                        <!-- Add more notifications as needed -->
-                                    </div>
-                                </li>
-                                </li>
+
 
                             </ul>
                         </div>
@@ -271,11 +258,11 @@
 
     <!-- Sidebar Section -->
     <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute;">
-    
+
         <a href="ViewOrganizationsAndDonors.html">View Registered Organizations/Donors</a>
         <a href="ReviewOrganizationAndDonorRequests.html">View Organizations/Donors Request</a>
         <a href="adminchangepass.html">Change Password</a>
-        <a href="ReviewSubmission.html">Review Submissions</a>
+        <a href="ReviewSubmissions.html">Review Submissions</a>
     </div>
     <!-- End Sidebar Section -->
 
@@ -305,91 +292,92 @@
         </div>
     </div>
     <!-- End Popup -->
-<section class="info_section layout_padding" id="info_section" style="position: absolute; width: 100%; margin-top: 5%;">
-    <div class="container">
-        <div class="info_contact">
+    <section class="info_section layout_padding" id="info_section"
+        style="position: absolute; width: 100%; margin-top: 5%;">
+        <div class="container">
+            <div class="info_contact">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/location-white.png" alt="">
+                            <span>
+                                Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/telephone-white.png" alt="">
+                            <span>
+                                Call : +01212777100
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="">
+                            <img src="images/envelope-white.png" alt="">
+                            <span>
+                                helping-hands@gmail.com
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-md-4">
-                    <a href="">
-                        <img src="images/location-white.png" alt="">
-                        <span>
-                            Gamal Abdel Nasser, New Cairo 1, Cairo Governorate, Egypt
-                        </span>
-                    </a>
+                <div class="col-md-8 col-lg-9">
+                    <div class="info_form">
+                        <form action="">
+                            <input type="text" placeholder="Enter your email">
+                            <button>
+                                subscribe
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <a href="">
-                        <img src="images/telephone-white.png" alt="">
-                        <span>
-                            Call : +01212777100
-                        </span>
-                    </a>
+                <div class="col-md-4 col-lg-3">
+                    <div class="info_social">
+                        <div>
+                            <a href="">
+                                <img src="images/fb.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/twitter.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/linkedin.png" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img src="images/instagram.png" alt="">
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <a href="">
-                        <img src="images/envelope-white.png" alt="">
-                        <span>
-                            helping-hands@gmail.com
-                        </span>
-                    </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- end info section -->
+
+    <footer class="container-fluid footer_section" id="footer_section"
+        style="position: absolute;width:center; margin-top: 34%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-9 mx-auto">
+                    <p>
+                        &copy; 2024 Software Project
+                        <a href="https://html.design/">Helping Hands Charity Organization</a>
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8 col-lg-9">
-                <div class="info_form">
-                    <form action="">
-                        <input type="text" placeholder="Enter your email">
-                        <button>
-                            subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-3">
-                <div class="info_social">
-                    <div>
-                        <a href="">
-                            <img src="images/fb.png" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="images/twitter.png" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="images/linkedin.png" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="images/instagram.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- end info section -->
-
-<footer class="container-fluid footer_section" id="footer_section"
-    style="position: absolute;width:center; margin-top: 34%;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-md-9 mx-auto">
-                <p>
-                    &copy; 2024 Software Project
-                    <a href="https://html.design/">Helping Hands Charity Organization</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 
     <script>
@@ -440,8 +428,9 @@
                 var rejectButton = document.createElement('button');
                 rejectButton.textContent = 'Reject';
                 rejectButton.className = 'reject-button';
-                rejectButton.addEventListener('click', () => removeRequest(index, 'rejected'));
+                rejectButton.addEventListener('click', () => removeRequest(index, 'rejected', type)); // Pass 'type'
                 buttonsDiv.appendChild(rejectButton);
+
 
                 var showButton = document.createElement('button');
                 showButton.textContent = 'Show Account';
@@ -456,20 +445,33 @@
         }
 
         // Function to remove a request
-        function removeRequest(index, status) {
+        // Function to remove a request
+        // Function to remove a request
+        function removeRequest(index, status, dataType) {
             var message;
             if (status === 'accepted') {
                 message = 'Request Accepted';
             } else {
                 message = 'Request Rejected';
             }
-            // Remove the request from the respective data array
-            donorRequestsData.splice(index, 1);
-            organizationRequestsData.splice(index, 1);
+            // Remove the request from the respective data array based on the dataType parameter
+            if (dataType === 'donors') {
+                donorRequestsData.splice(index, 1);
+            } else if (dataType === 'organizations') {
+                organizationRequestsData.splice(index, 1);
+            }
             // Redisplay the requests
-            toggleRequests('donors');
+            toggleRequests(dataType); // Pass the dataType
+
+            // Show the message
             alert(message);
+
+            // Hide the request content
+            var requestDiv = document.querySelectorAll('.request')[index];
+            requestDiv.style.display = 'none';
         }
+
+
 
         // Function to show request details in popup
         function showRequestDetails(request) {
@@ -491,18 +493,18 @@
 
         // Initial display of donor requests
         displayRequests(donorRequestsData);
-         function toggleNav() {
-                var sidebar = document.getElementById("mySidebar");
-                var main = document.getElementById("main");
-                if (sidebar.style.width === "200px") {
-                    sidebar.style.width = "0";
-                    main.style.marginLeft = "0";
-                } else {
-                    sidebar.style.width = "200px";
-                    main.style.marginLeft = "200px";
-                    adjustSidebarHeight(); // Call the function to adjust sidebar height
-                }
+        function toggleNav() {
+            var sidebar = document.getElementById("mySidebar");
+            var main = document.getElementById("main");
+            if (sidebar.style.width === "200px") {
+                sidebar.style.width = "0";
+                main.style.marginLeft = "0";
+            } else {
+                sidebar.style.width = "200px";
+                main.style.marginLeft = "200px";
+                adjustSidebarHeight(); // Call the function to adjust sidebar height
             }
+        }
     </script>
 </body>
 

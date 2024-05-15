@@ -131,32 +131,6 @@
             opacity: 0.8;
         }
 
-        .square-button {
-            width: 350px;
-            /* Adjust button width as needed */
-            height: 250px;
-            /* Set height equal to width for square shape */
-            background-color: #fff;
-            /* Button background color */
-            color: #000000;
-            /* Button text color */
-            border: none;
-            /* Remove button border */
-            border-radius: 10px;
-            /* Button border radius */
-            font-size: 18px;
-            /* Button text size */
-            font-weight: bold;
-            /* Button text weight */
-            cursor: pointer;
-            /* Change cursor to pointer on hover */
-            transition: background-color 0.3s ease;
-            /* Smooth transition for background color */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            /* Add shadow */
-            margin: 10px;
-            /* Adjust spacing between buttons */
-        }
 
         .square-button:hover {
             background-color: #6A679E;
@@ -315,25 +289,35 @@
             border-radius: 5px;
         }
 
-        .search-container button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 17px;
+        .square-button {
+            width: 250px;
+            height: 70px;
+            background-color: #fff;
+            color: #000000;
             border: none;
-            border-radius: 5px;
-            background-color: #6A679E;
-            color: #fff;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
         }
 
-        .search-container button:hover {
-            background-color: #49476E;
+        .square-button:hover {
+            background-color: #6A679E;
         }
+
 
         /* Filter dropdown styles */
         .filter-dropdown {
             margin-right: 10px;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
         .filter-dropdown select {
@@ -342,7 +326,36 @@
             border: none;
             border-radius: 5px;
         }
-    </style>
+
+        .show-button,
+        .remove-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show-button {
+            background-color: #6A679E;
+            color: #fff;
+        }
+
+        .remove-button {
+            background-color: #ff6347;
+            color: #fff;
+        }
+
+        .show-button:hover,
+        .remove-button:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            transition: margin-left .5s;
+            padding: 16px;
+            margin-left: 0;
+            /* Initial margin set to 0 */
+        }
     </style>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -386,21 +399,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.html"> Log Out </a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-bell fa-lg"></i> <span
-                                            class="badge badge-pill badge-danger">3</span>
-                                        <!-- Example: display number of notifications -->
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item">Notification 1</a>
-                                        <a class="dropdown-item">Notification 2</a>
-                                        <a class="dropdown-item">Notification 3</a>
-                                        <!-- Add more notifications as needed -->
-                                    </div>
-                                </li>
-                                </li>
+
 
                             </ul>
                         </div>
@@ -414,16 +413,20 @@
     <!-- End Header Section -->
 
     <!-- Sidebar Section -->
-    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1000px; position: absolute;">
+    <div id="mySidebar" class="sidebar" style="width: 0px; height: 1500px; position: absolute;">
 
         <a href="ViewOrganizationsAndDonors.html">View Registered Organizations/Donors</a>
         <a href="ReviewOrganizationAndDonorRequests.html">View Organizations/Donors Request</a>
         <a href="adminchangepass.html">Change Password</a>
-        <a href="ReviewSubmission.html">Review Submissions</a>
+        <a href="ReviewSubmissions.html">Review Submissions</a>
     </div>
     <div class="main-content" id="main">
-        <button onclick="toggleDonorPosts()">View Donor Posts</button>
-        <button onclick="toggleOrganizationPosts()">View Organization Posts</button>
+
+        <div class="button-row">
+            <button class="square-button" onclick="toggleDonorPosts()">View Donors</button>
+            <button class="square-button" onclick="toggleOrganizationPosts()">View Organizations</button>
+        </div>
+
 
         <div id="donor-posts" class="posts">
             <!-- Donor Posts -->
@@ -435,8 +438,8 @@
                 <p class="post-content">
                     Item Offered: Toy<br>
                     Quantity: 1<br>
-                    Age Group: 3-5 years
-                    <img src="images/Doll.jpg" alt="">
+                    Age Group: 3-5 years<br>
+                    <img src="images/Doll.jpg" alt="" style="width: 200px; height: auto;">
                 </p>
 
                 <div class="post-buttons">
@@ -626,7 +629,6 @@
             }
         }
 
-
         function toggleDonorPosts() {
             var donorPosts = document.getElementById("donor-posts");
             var organizationPosts = document.getElementById("organization-posts");
@@ -666,6 +668,7 @@
             organizationPosts.style.display = "block";
         }
 
+
         // Function to handle accepting or rejecting posts
         function handleAction(postElement, action) {
             postElement.style.display = "none"; // Hide the post
@@ -684,6 +687,16 @@
                 handleAction(postElement, action); // Call the function to handle the action
             });
         });
+        function toggleAccounts(type) {
+            // Function to toggle between donor and organization accounts
+
+            if (type === 'donors') {
+                displayAccounts(donorsData);
+            } else if (type === 'organizations') {
+                displayAccounts(organizationsData);
+            }
+        }
+
     </script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
